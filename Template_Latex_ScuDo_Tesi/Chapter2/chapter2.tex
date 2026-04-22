@@ -1,0 +1,408 @@
+\chapter{Background and Related Work}
+
+\graphicspath{{Chapter2/}}
+
+\section{Software Engineering}
+
+\subsection{Software Testing}
+
+\subsection{Software Modeling and Model Driven Engineering}
+
+\subsubsection{Automated Evaluation of UML Class Diagrams}
+\label{sec:uml_eval}
+
+Automatic assessment of UML diagrams is a relevant problem for software engineering educators, and research literature has explored multiple approaches to assess it. A valid assessment process cannot simply evaluate whether a diagram follows rules and constraints defined by the UML specification, but should also ensure that the intent behind a model is consistent with the scenario it is supposed to represent, evaluating the students' ability to represent adequately different domains together with following modeling best practices.
+
+One of the earliest studies that systematically defined ways to understand and measure model quality was presented by Lindland et al. \cite{lindland1994understanding}, who identified three quality dimensions: \textit{syntactic quality}, which was defined as the adherence to a given language's modeling rules, \textit{semantic quality}, presented as a diagram's fidelity to the intended domain, and \textit{pragmatic quality}, the understandability of a diagram to human readers and stakeholders. Over the years, these three dimensions became the most commonly used taxonomy to evaluate model-based assignments such as UML diagrams, with several automated tools referring back to them. 
+
+An application of these three dimensions specifically for UML class diagrams was described by Bolloju and Leung \cite{bolloju2006assisting}, who analyzed recurring modeling errors made by students and grouped them according to the three categories. The resulting taxonomy found that most syntax issues regard absence of cardinality values or attribute types, inappropriate element naming, and general incorrect use of the UML notation when representing a diagram; semantic issues related to wrong multiplicity values or attribute types, placing attributes or methods in the wrong classes, and using wrong association types when connecting classes; lastly, pragmatic issues covered understandability defects such as redundant elements, under-explained hierarchies in inheritance relationships, readability issues, and inconsistencies in the graphical representation of elements.
+
+Following the taxonomy described above, multiple tools have been developed over the last ten years to automate class diagram evaluation: one example of such tools has been developed by Anas et al. \cite{anas2021newmethod}, who implemented a semi-automatic summative approach for providing feedback to students without relying on teacher intervention. Their solution works by converting a diagram into a labeled graphs where classes and attributes are nodes and associations between classes become the connecting edges; a similarity measure computed as the weighted sum of three independent, configurable measures (syntactic, structural, semantic) between said graph and the graph representation of the teacher's diagram is used to generate feedback showing matching elements, differences, and errors. A certain degree of variability is allowed in the valuation by accepting comparisons with multiple teacher diagrams, but the authors highlight the weakness of the approach on complex exercises, where matching performance tends to fall, leading to low precision scores.
+
+Another approach for automated comparison was presented by Nikiforova et al. \cite{nikiforova2015approach}, who defined a numeric metric named \textit{semantic disance} to quantify the difference between two diagrams as a way to understand missing elements and matches without needing to manually inspect them. The approach consists of computing four independent distance vectors for classes and interfaces, attributes, methods, and associations: for each vector, elements of the corresponding type found in the first diagram are paired with the element in the second with the closest semantic similarity (found by comparing the elements' names); the euclidean vectors are then used to compute the semantic distance for each element type, and for the overall diagram, allowing for a way to understand which areas need to be revised to bring a diagram closer to a reference. An overall distance score of 0 means that two diagrams are equivalent, and higher distance scores mean that the diagram under evaluation is farther from the reference; while the approach is effective for understanding improvement areas, it requires human intervention in case of elements with names that are semantically equivalent but lexically different, since they would not be considered a valid match. 
+
+UMLGrade \cite{farias2020whats} is presented as a six-step pipeline where a teacher can define the reference diagram and evaluation criteria, and an automated comparison can then be performed between said reference and student-produced diagrams, resulting in a report that covers semantic and syntax aspects, as well as adherence to design rules and object-oriented development principles, and readability, going beyond simple structural comparison. It can be seen as a way to emulate the evaluation process performed by a teacher, and allows multiple ways to convey the same concept, allowing for more variety in the space of accepted student solutions. 
+
+A practical example of how UMLGrade can be used in practice has been described by Modi et al. \cite{modi2021tool}, who extended it to also cover additional UML notations such as use case, activity, sequence, and state machine diagrams. The tool has been implemented as a desktop architecture where a teacher can upload a zip archive with the student diagrams and the source code of their solution, and different components are used to identify the type of diagram, compare it with the corresponding reference, and generate a feedback report for the students, showing the list of correct elements and missing ones with the overall score, and one for the teacher with the recap of assigned grades. The matching approach, however, does not allow flexibility and expects explicit name equivalence, meaning that semantically equivalent representations are considered wrong; there are no examples of actual tool use with students, and no comparison with human evaluators, meaning that its strengths and potential benefits are only assumed. 
+
+Bian et al. \cite{bian2019automated} identified the problem of variants and alternative representations for UML class diagram assignments, and proposed a metamodel and a three-step grading algorithm to automate diagram evaluation. The first step takes every class in a teacher-defined reference diagram and looks for the closest class in the student's diagram, considering syntax similarity (Levenshtein distance between names), semantic similarity (WordNet database and semantic relationships among names), and structural similarity (similarity of attributes and methods) to identify the best match; following steps match attributes and methods in matched classes using the same approach, then match associations between matched classes. A preliminary study performed with a tool implementing this approach yielded promising results (a grade distribution within 14\% of the human-assigned grades), although no examples of further use exist in the literature.
+
+Lastly, Wodel-EDU \cite{gomezabajo2017dsl} implements a different approach: rather than automatically evaluating student-produced diagrams compared to a reference, it produces variants, or \textit{mutants}, of said reference and asks students to identify the correct model. This is achieved through the domain specific language (DSL) Wodel \cite{gomezabajo2016wodel}, which can be applied to any type of modeling language according to a changeable metamodel and allows for multiple operations such as creating, editing, or deleting objects with multiple selection criteria and support for computing static and dynamic element coverage. 
+
+
+
+\section{Gamification}
+
+Gamification is a concept that has been formally defined in 2011 by Deterding et al. \cite{deterding_game_2011} as \emph{the use of game design elements in non-recreational contexts}; its intended goal is to enhance activities that are considered unappealing, unpleasant, or uninteresting by increasing user motivation and interest, with improvements in performance being another possible benefit.
+
+This puts
+
+
+\begin{comment}
+    
+determination theory: the need for competence, the need for autonomy and the need for relatedness  \cite{Sailer, Sailer2, Shi}. 
+
+Gamification learns from the experiences and research developments of the game industry, identifying and extracting those features of games which motivate players and make the experience enjoyable and applying them to different industries and environments \cite{Pedriera}. The game industry, over the years, has refined techniques for optimising human motivation and engagement \cite{Octalysis}, resulting in a set of game elements tailored to human motivation. For example:
+\begin{itemize}
+    \item the need for competence has been addressed by providing the player with opportunities to earn points, awards and badges and compare their competence with other players through leaderboards \cite{Sailer};
+    \item the need for autonomy has been addressed by providing players with a choice of avatars, diverging story paths, and choice of ways to play \cite{Wee};
+    \item the need for connection has been addressed with meaningful storylines centred around the player, cooperative gameplay (with real or simulated players) \cite{Sailer}, and through game-related discussion forums \cite{Wee}.
+\end{itemize} 
+These game elements over the last decade have been applied to non-game contexts with increasing frequency. 
+
+Games have been around for centuries; however, gamification as a concept was only recently formally established, with the term's first documented use in 2008 \cite{Deterding}. Gamification initially emerged from the marketing and digital media industry, then experienced widespread adoption in mid-2010 \cite{Deterding, Alhammad}. The idea that gamification could be used to improve the motivation of users was widely accepted \cite{Sailer}. However, conclusive evidence to support this hypothesis was lacking \cite{Sailer2, Pedriera}. 
+There are many examples of frameworks for gamified systems: the framework named Octalysis, theorized by Chou \cite{chou2015actionable}, was chosen as the basis for defining the gamified elements used in this study.
+
+Octalysis defines eight main points, named \textbf{Core Drives}  (see Figure \ref{fig:octalysis}) to evaluate and define a gamified system:
+\begin{enumerate}
+    \item \textbf{Epic Meaning and Calling:} the feeling users have when they believe that they are doing something greater than themselves, or that they have been \emph{chosen} for something. This is usually applied when users dedicate their time to creating something new for their community;
+    \item \textbf{Accomplishment:} the internal drive of making progress, developing skills, and eventually overcoming challenges. Considered a necessary drive, as rewards without a challenge behind them are viewed as meaningless, as well as the easiest one to design;
+    \item \textbf{Empowerment of Creativity and Feedback:} the feeling of being part of a creative process which encourages users to repeatedly figure things out, and try new combinations of actions. It is important to allow users to express their creativity, show the results of said creativity, receive new feedback and then respond in turn;
+    \item \textbf{Ownership and Possession:} the drive works by making users feel like they own something, innately guiding them to actions that improve what they already own and that make them own new things. This likely leads to users spending more time on customising their avatars in gamified systems, as well as users also hoarding virtual currencies;
+    \item \textbf{Social Influence and Relatedness:} this drive incorporates the social elements that motivate people, such as acceptance, companionship, competition and envy. Seeing friends being particularly skilled at some activity or in possession of some rare or valuable elements can be an excellent motivator to try and reach the same heights;
+    \item \textbf{Scarcity and Impatience:} the feeling of wanting something because it is not possible to have it already; delaying the unlocking of something motivates people to think about it for a long time;
+    \item \textbf{Unpredictability and Curiosity:} the drive of wanting to find out what happens next, as the feeling of the unknown engages the brain and makes people think about the gamified system;
+    \item \textbf{Loss and Avoidance:} a Core Drive based upon the avoidance of something negative happening. Particularly strong with limited opportunities that can fade away, as it drives people to act immediately to avoid losing something forever. 
+\end{enumerate}
+
+
+
+%Game elements are those components of games which have been created to meet the motivational needs of players. 
+There is no strict definition of what constitutes a game element compared to merely an element of digital applications, nor a strict boundary between what constitutes a game principle compared to a game element  \cite{Deterding, Sailer}. For this study, game elements are considered to be those components of games which can be extracted and applied to applications in non-game contexts and which are noticeably present in mainstream games, such as the existence of a point system or a reward scheme.
+
+%Some of the most commonly used game elements include:
+Many studies have characterised the game elements in different ways, with
+various different lists and descriptions of the elements \cite{Pedriera, Basten, Sailer, Antonaci}. An analysis of these studies reveals that a large amount of game elements can prove to be effective and beneficial.
+The game elements presented below are a subset of the elements commonly seen in many studies on gamification and its effectiveness: they can be grouped under the categories identified by Olgun et al. \cite{Olgun} and are generally believed to be the most effective at increasing motivation and interest of users of gamified systems, and were thus the ones considered for this study.
+
+\textbf{Points} are a basic element of many games. They are, in essence, a numerical counter that grows as players complete tasks. Points can come in many formats, e.g. experience points (XP), skill points, or reputation, and serve as an indicator of player progress through the game  \cite{Sailer}.
+
+\textbf{Badges, achievements and medals} are different terms for a similar concept: a reward for achieving a specific goal. They are a visible indicator of the players' accomplishments, commonly represented with a specific picture or icon relevant to the accomplished task. Badges are usually optional but encourage players to perform additional tasks or experiment with different ways of interacting with the system  \cite{Basten, Sailer}. Badges can also be a form of social motivation by creating the essence of belonging to an exclusive club, especially if the badges are challenging to earn  \cite{Sailer}.
+
+\textbf{Prizes} are items that users receive for achieving a task or goal. These items can be tangible, such as extra marks for a graded course for the student at the top of the leaderboard, or intangible, such as in-game items or currency. In this study, Gamification was assessed as a tool for inciting user motivational behaviours. Therefore, only intangible prizes were considered (tangible prizes are considered as a separate motivational tool for gamification). 
+
+\textbf{Progress bars} are one method of displaying user progress through a gamified system. Similar to those seen when loading a web page, progress bars usually take the shape of horizontal rectangles filled to a certain point to indicate how much of a task a user has completed. 
+
+\textbf{Levels} are attached to the user's profile or avatar and are a method of indicating the user's experience with using a system. Commonly, there are a fixed number of levels available, which could be either numbered sequentially or labelled according to experience, for example, from novice to master. As the user completes tasks, their experience improves, which is indicated by a transition to the next level. Levels are generally tied to experience points (XP), but any counter can be used to indicate progress to the next level. 
+
+\textbf{Challenges} are complex tasks that require persistence, dedication and the display of skill to overcome. %Challenges are a key element of gaming, allowing players to test their skills and prove their competence in the gameplay.
+In gamification, challenges can be used as a method for testing participants' skills, providing them with an arena for proving their competence in a given activity. Essentially, challenges in gamified applications consist of completing a larger task than would be required during regular use of the application. %\RC{secondo me il discorso sui boss fights non serve e la descrizione è in generale troppo lunga e un po' fuori focus. scriverei semplicemente che le challenges sono delle sfide aggiuntive rispetto ai task normali}
+
+\textbf{Leaderboards} compare the performance of users against others. They are generally shown as a rankings table, using performance metrics (such as points or badges earned) to sort users from highest to lowest rank. Leaderboards leverage the competitive nature of humans, displaying users' performance compared to their peers to motivate them to improve their status \cite{Sailer}.
+
+\textbf{Competition and Cooperation} involves users working directly either against one another or with each other to achieve a shared task. Separately from leaderboards, the Competition game element refers to direct competition with a peer in a one-versus-one or group-versus-group scenario. Cooperation refers to users working with others to achieve a common goal. Cooperation can either happen within members of an explicitly defined team, or as part of a fluid collective.
+
+\textbf{Quests} are tasks to be completed by the user. They are similar to the challenges game element mentioned previously. However, quests expand on these by providing a narrative aspect to the challenge. These narrative aspects provide a fictional reason for users to complete the tasks. They can be either independent stories or part of the overarching narrative for a gamified system. 
+
+\textbf{Avatars} are visual representations of users displayed within a gamified system  \cite{Sailer}. They can either be selected by the user from a set list of avatar choices or created and designed by the user. Avatars allow users to express their personality and character separate from their physical appearance. In this way, they can provide a means of social interaction with a potentially different experience compared to the real world.
+
+\textbf{Easter Eggs} are hidden surprises that can be discovered by users of a system. They are generally camouflaged and require users to search deeply within a system to uncover them. Easter eggs are used to encourage exploration and reward dedicated users.
+
+\textbf{Aesthetics} are related to the look and feel of a user interface. This includes, but is not limited to, the colour scheme, layout of components, font choices and animations. The aesthetics of a user interface are of major importance when it comes to the effective use of gamification concepts  \cite{Sailer}.
+
+\textbf{Feedback} covers a broad design aspect which is particularly important when used in an educational environment. Feedback in a gamified computer application includes interactive tutorials, error warnings, correction suggestions and notifications for the correct completion of tasks. These types of immediate feedback, which can be provided by a computer application to many students at once, as opposed to students waiting their turn for individual feedback from a teacher, can enable an accelerated learning environment.
+
+\end{comment}
+\begin{comment}
+    
+
+Purpose of the section
+
+This section introduces gamification as a design paradigm, clarifies its theoretical foundations, and positions it as a tool to address motivational and engagement issues in software engineering activities.
+
+You are doing three things at once:
+
+defining gamification precisely,
+
+showing where it works,
+
+showing where it is missing or underdeveloped.
+
+Definition and Core Concepts of Gamification
+What to introduce
+
+Start with a clear, authoritative definition.
+
+Mandatory citation:
+
+Deterding et al., 2011
+“Gamification is the use of game design elements in non-game contexts.”
+
+Then clarify what gamification is NOT:
+
+Not serious games
+
+Not game-based learning
+
+Not full-fledged games
+
+Cite:
+
+Deterding et al., 2011
+
+Seaborn & Fels, 2015 (conceptual clarification)
+
+Game design elements (the ones you will later reuse)
+
+Introduce only elements you actually employ in:
+
+BIPMIN
+
+UMLegend
+
+Testing plugins
+
+Typical elements to cover:
+
+Points
+
+Badges
+
+Levels
+
+Challenges
+
+Feedback and progress visualization
+
+Leaderboards (with caution)
+
+Cite:
+
+Werbach & Hunter, For the Win, 2012
+
+Hamari et al., 2014 (mechanics–dynamics–outcomes)
+
+�� Tip:
+Already hint that not all elements are universally effective — this gives you room later to justify design choices.
+
+Psychological foundations (lightweight)
+
+You should include a minimal theoretical grounding:
+
+Intrinsic vs extrinsic motivation
+
+Self-Determination Theory (autonomy, competence, relatedness)
+
+Cite:
+
+Deci & Ryan, 2000
+
+Hamari et al., 2014 (empirical link to motivation)
+
+⚠️ Keep this concise (1–1.5 pages).
+You are not a psychology thesis.
+
+
+\end{comment}
+
+
+
+\subsection{Gamification in Educational Contexts}
+
+\begin{comment}
+    
+2.2.2 Gamification in Educational Contexts
+Why this subsection exists
+
+To show that:
+
+Gamification is widely studied
+
+Results are mixed but promising
+
+Design and evaluation matter
+
+What literature to include
+
+Start with systematic reviews and meta-analyses:
+
+Key citations:
+
+Dicheva et al., 2015 — systematic mapping
+
+Hamari et al., 2014 — empirical studies overview
+
+Toda et al., 2019 — taxonomy and pitfalls
+
+Summarise:
+
+Positive effects on engagement and participation
+
+Inconclusive effects on learning outcomes
+
+Strong dependency on context and design
+
+Known limitations (important for credibility)
+
+Explicitly mention:
+
+Novelty effect
+
+Over-reliance on points/badges
+
+Short-term evaluations
+
+Lack of longitudinal studies
+
+Cite:
+
+Hanus & Fox, 2015
+
+Toda et al., 2017
+
+➡️ This directly anticipates Chapter 5 (long-term evaluation).
+
+Transition sentence (very important)
+
+End with something like:
+
+While gamification has been extensively investigated in general educational settings, its application to software engineering education, and in particular to modeling and testing activities, remains limited and fragmented.
+
+\end{comment}
+\subsection{Gamification in Software Testing}
+
+\begin{comment}
+    
+You can optionally include this as a bridge subsection, even if not explicit in your ToC.
+
+What to cover
+
+Overview of gamification applied to:
+
+programming courses
+
+introductory SE courses
+
+Cite:
+
+Barata et al., 2013
+
+Domínguez et al., 2013
+
+Key point:
+
+Most works focus on coding
+
+Very little on modeling or testing
+
+
+2.2.4 Gamification in Software Testing
+Strategy: be concise and critical
+
+This subsection should:
+
+Be short (1–2 pages)
+
+Clearly show lack of maturity
+
+Cover:
+
+Industrial-oriented approaches
+
+Productivity or defect detection focus
+
+Limited educational validation
+
+Possible citations:
+
+Fraser et al. (crowdsourced testing & gamification)
+
+Few exploratory academic works (you don’t need many)
+
+Conclude with:
+
+Gamification in software testing remains largely unexplored in educational contexts and lacks structured frameworks and empirical validation.
+
+\end{comment}
+\subsection{Gamification in Software Modeling}
+\begin{comment}
+    
+2.2.5 Gamification in Software Modeling
+This is your core positioning subsection
+
+Here you should:
+
+Review existing tools or proposals
+
+Highlight:
+
+ad-hoc designs
+
+lack of theoretical grounding
+
+absence of reusable frameworks
+
+short-term or anecdotal evaluations
+
+You can explicitly say:
+
+Most approaches gamify outcomes, not process
+
+Few tools support iterative learning
+
+Little support for instructors
+
+Conclude strongly:
+
+To the best of our knowledge, no unified gamification framework specifically designed for software modeling activities has been proposed and empirically validated across multiple tools and contexts.
+
+➡️ This is the launchpad for Chapter 3.
+
+\end{comment}
+\section{Artificial Intelligence and Large Language Models}
+
+\begin{comment}
+    \subsection{UML and Software Modeling Quality}
+\label{sec:llm4mde:bg:uml}
+
+The Unified Modeling Language (UML) is the de-facto standard visual notation for software design and documentation~\cite{rumbaugh2004unified}. Among the diagram types it defines, \textit{class diagrams} and \textit{use case diagrams} occupy a central position in requirements engineering and conceptual modeling. Class diagrams describe the static structure of a system — its classes, attributes, methods, and associations — and are the most widely adopted notation for object-oriented domain modeling~\cite{fowler2003uml}. Use case diagrams, by contrast, capture the functional boundary of a system in terms of actors and the goals they pursue, providing a compact framework for requirements elicitation and communication~\cite{bittner2003use}.
+
+Producing accurate and complete UML diagrams from natural language requirements is a challenging cognitive task. It requires the practitioner to simultaneously master the syntactic rules of the notation, correctly map domain concepts to modeling constructs, and maintain coherence with stakeholder expectations~\cite{koznov2007uml}. These difficulties are amplified in educational settings, where students are still developing both domain knowledge and modeling fluency.
+
+The quality of UML class diagrams has been studied systematically in the software engineering literature. Bolloju and Leung~\cite{bolloju2006assisting} proposed a three-dimensional quality framework that partitions diagram quality into: (i)~\textbf{syntactic quality}, which verifies adherence to the structural rules of UML (e.g., correct use of symbols, presence of cardinality labels, appropriate naming); (ii)~\textbf{semantic quality}, which evaluates the accuracy and completeness of the domain representation (e.g., correct cardinalities, appropriate choice between association and aggregation, correct placement of attributes); and (iii)~\textbf{pragmatic quality}, which addresses the understandability of the diagram for its intended stakeholders (e.g., absence of redundancy, consistent styling). This framework has been widely adopted in empirical studies of UML quality and is used consistently across all the studies presented in this chapter.
+
+To compare two class diagrams numerically, Nikiforova et al.~\cite{nikiforova2015approach} proposed a semantics-based distance measure that decomposes the difference between a proposed diagram and a reference solution into four distance vectors covering classes and interfaces, attributes, methods, and relationships. The aggregate Euclidean distance provides a scalar measure of how far a proposed solution is from the reference; a distance of zero indicates an identical diagram. This metric is adopted in three of the four studies of this chapter as a \textit{correctness} measure that is orthogonal to the intrinsic quality dimensions of Bolloju et al.
+
+The quality framework of Lindland et al.~\cite{lindland1994understanding} offers a complementary theoretical perspective: it frames conceptual modeling quality in terms of the correspondence between a model and its intended domain (semantic quality) and the correspondence between the model and the understanding of its readers (pragmatic quality), alongside the syntactic well-formedness of the notation. This framework, originally defined for conceptual modeling in general, has been applied to UML class diagram evaluation in the most recent study of this chapter (Section~\ref{sec:llm4mde:study4}).
+
+\subsection{Large Language Models in Software Engineering}
+\label{sec:llm4mde:bg:llm}
+
+Large Language Models (LLMs) are neural language models trained on large-scale corpora of natural language and code text using the Transformer architecture~\cite{vaswani2017attention}. The most prominent families include OpenAI's GPT series~\cite{brown2020language,openai2023gpt4}, Google's PaLM/Gemini series~\cite{anil2023gemini}, and a growing ecosystem of open-weight models such as Meta's LLaMA~\cite{touvron2023llama}, Alibaba's Qwen~\cite{bai2023qwen}, and DeepSeek~\cite{deepseek2024}. These models exhibit emergent capabilities in instruction following, multi-step reasoning, and structured text generation that make them appealing for automation tasks beyond natural language generation.
+
+The application of LLMs to Software Engineering (SE) tasks has been the subject of several comprehensive surveys. Fan et al.~\cite{fan2023large} categorized LLM applications in SE into code generation, documentation, testing, and, to a lesser extent, design activities including diagram generation. Hou et al.~\cite{hou2023large} conducted a systematic literature review of LLMs in SE, confirming that the bulk of empirical work concerns code-centric tasks, with requirements engineering and model-based activities receiving comparatively less attention. Ma et al.~\cite{ma2023scope} investigated the scope of ChatGPT specifically for SE tasks, reporting strong results for code synthesis and documentation but noting limitations in tasks requiring structured, constraint-rich outputs — a category that naturally includes UML diagram generation.
+
+Ozkaya~\cite{ozkaya2023application} provided an early assessment of opportunities and risks when deploying LLMs for SE tasks, emphasizing the importance of evaluating LLM outputs not only for syntactic plausibility but also for semantic correctness with respect to domain requirements. Belzner et al.~\cite{belzner2023large} explored LLM-assisted SE more broadly, noting the potential of LLMs to identify core entities in a domain description and draft relational models — a capability directly relevant to class diagram generation.
+
+\subsection{LLMs for UML Model Generation}
+\label{sec:llm4mde:bg:llm4uml}
+
+The application of LLMs specifically to UML diagram generation is a research area that gained momentum in 2023–2024, coinciding with the rapid adoption of GPT-4 and related models.
+
+Arulmohan et al.~\cite{arulmohan2023extracting} published one of the earliest empirical studies on LLM-based class diagram extraction from textual requirements, showing that GPT-based extraction outperformed traditional NLP pipelines. Cam\`{a}ra et al.~\cite{camara2023assessment} reported an experience report on ChatGPT's capability to create UML class diagrams, establishing a conceptual framework for assessing LLM-generated models and suggesting that LLM integration into the modeling process is feasible but requires careful prompt design and human validation. They later extended this work into a proposal for standardized benchmarks for evaluating LLMs on software modeling tasks~\cite{camara2024benchmarks}.
+
+Chen et al.~\cite{chen2023automated} performed a comparative study of LLMs for automated domain modeling, finding that while models showed reasonable domain understanding, they consistently struggled with completeness and adherence to modeling best practices such as correct relationship types and cardinalities. Li et al.~\cite{li2024llm} demonstrated that Chain-of-Thought (CoT) prompting improves the derivation of class diagrams from user stories, particularly in identifying classes, though attribute identification remained challenging.
+
+Beyond class diagrams, Ferrari et al.~\cite{ferrari2024model} evaluated ChatGPT for UML sequence diagram generation, reporting satisfactory completeness but noting issues with ambiguous elements. Herwanto~\cite{herwanto2024automating} assessed GPT-based generation of Data Flow Diagrams, highlighting high accuracy and completeness. Schleifer et al.~\cite{schleifer2024minimal} defined LLM-based pipelines for use case diagram generation from automotive requirements, demonstrating end-to-end feasibility with minimal training data. Zhang et al.~\cite{zhang2024experimenting} developed a prototype integrating LLMs in software development workflows, using use case generation as an intermediate step towards test case synthesis.
+
+On the tool side, Saini et al.~\cite{saini2022machine} explored a machine learning-based approach for incremental interactive domain modeling, while Yang and Sahraoui~\cite{yang2022towards} proposed grammar-based rules for class extraction from natural language, reporting limited precision and recall. Robeer et al.~\cite{robeer2016automated} developed Visual Narrator, a tool converting user stories to conceptual models via NLP, predating the LLM era but establishing relevant benchmarks.
+
+Several studies have highlighted that LLMs are best used as \textit{assistive} tools rather than as autonomous modelers, complementing human judgment rather than replacing it~\cite{shehata2024creating,wang2024llms}.
+
+\subsection{LLMs in Educational Settings}
+\label{sec:llm4mde:bg:education}
+
+The educational dimension of LLM adoption is highly relevant for the studies in this chapter, all of which are framed in a university-level SE curriculum context. Kasneci et al.~\cite{kasneci2023chatgpt} conducted a broad survey of opportunities and challenges of LLMs for education, noting benefits in personalized feedback and content generation alongside risks of academic integrity violations. Sarsa et al.~\cite{sarsa2022automatic} demonstrated the automatic generation of programming exercises and explanations using GPT-3, anticipating the use of LLMs as exercise-generation assistants for computing education. Xiao et al.~\cite{xiao2023evaluating} evaluated LLM-generated reading comprehension exercises at high school level, establishing evaluation criteria that partially inspired the assessment approach adopted in this chapter.
+
+In the context of SE education specifically, Huber and Hagel~\cite{huber2022tool} reviewed tools for teaching UML diagrams, identifying a gap in systems that provide automated, fine-grained feedback on diagram quality. This gap motivates the tool-oriented contribution presented in Section~\ref{sec:llm4mde:study3}.
+
+\subsection{Exercise Evaluation Frameworks and Tools}
+\label{sec:llm4mde:bg:tools}
+
+Automated evaluation of diagram-based exercises has been explored through model mutation and constraint checking. G\'{o}mez-Abajo et al.\ developed Wodel-EDU~\cite{gomez2023automated,gomez2017domain}, a Moodle-integrated tool that generates diagram exercise variants via a domain-specific language for model mutation and evaluates student solutions against teacher-defined constraints. Foss et al.~\cite{foss2022automatic} proposed AutoER, a question generation system for UML database design exercises that compares student diagrams with teacher-defined reference models on named elements. These  systems establish important foundations for the automated evaluation engineenvisioned in the TIGRE tool introduced in Section~\ref{sec:llm4mde:study3}.
+
+\bigskip
+\noindent\textbf{Summary.} The background reviewed above converges on three observations that motivate the work presented in this chapter: (1)~LLMs have demonstrated non-trivial capability for UML diagram generation, but the extent and limits of that capability — across diagram types, prompting strategies, and model families — remain incompletely characterized; (2)~quality assessment frameworks for UML diagrams (Bolloju, Nikiforova, Lindland) provide principled metrics that can be applied to LLM-generated artifacts; (3)~the educational setting provides a tractable and practically relevant context in which LLM performance can be benchmarked against human solvers and used to support instructors and students.
+\end{comment}
+
+\subsection{Large Language Models for Software Modeling}
