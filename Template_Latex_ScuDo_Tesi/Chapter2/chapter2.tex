@@ -4,9 +4,16 @@
 
 \section{Software Engineering}
 
-\subsection{Software Testing}
+%\subsection{Software Testing}
 
 \subsection{Software Modeling and Model Driven Engineering}
+
+The Unified Modeling Language ... \textbf{to be continued}
+
+
+Despite being the most commonly used notation for object-oriented design and documentation, UML tends to be underused in both industrial context and academic education, with several studies documenting causes for this gap. A survey asking practitioners and students for perceived difficulties identified limitations such as notation complexity, the necessity of putting effort to keep consistency between diagrams and code, and absence of adequate tools for supporting interactive learning \cite{siau2006identifying}; another investigation on university programming courses conceptualized the issues for UML class diagrams, finding systematic misunderstandings related to object identity, inheritance understanding, and difficulties in representing association semantics that persisted after the learning phase \cite{boustedt2012students}. An observation focused more on the practitioner side found that, during agile development processes, there is a tendency to substitute formal UML representations with informal whiteboards and other, less detailed notations, due to a preference for speed and flexibility against completeness and precision.
+
+This low usage of the UML notation has relevant implications on educational aspects: Bogdanova \cite{bogdanova2019towards} showed that a substantial amount of practice is necessary to reach a basic level of proficiency in conceptual modeling, and identified recurring error patterns among learners over the years; the conclusion behind the study is that sustained and personalized feedback is necessary to help students reach a sufficient level of competence: however, providing such assistance is a complex endeavor in large-scale university courses. The need of feedback tailored to students, that does not require teacher intervention and can rather substitute human assessment, is one of the guiding motivation behind the research activities undertaken throughout the PhD.
 
 \subsubsection{Automated Evaluation of UML Class Diagrams}
 \label{sec:uml_eval}
@@ -19,7 +26,7 @@ An application of these three dimensions specifically for UML class diagrams was
 
 Following the taxonomy described above, multiple tools have been developed over the last ten years to automate class diagram evaluation: one example of such tools has been developed by Anas et al. \cite{anas2021newmethod}, who implemented a semi-automatic summative approach for providing feedback to students without relying on teacher intervention. Their solution works by converting a diagram into a labeled graphs where classes and attributes are nodes and associations between classes become the connecting edges; a similarity measure computed as the weighted sum of three independent, configurable measures (syntactic, structural, semantic) between said graph and the graph representation of the teacher's diagram is used to generate feedback showing matching elements, differences, and errors. A certain degree of variability is allowed in the valuation by accepting comparisons with multiple teacher diagrams, but the authors highlight the weakness of the approach on complex exercises, where matching performance tends to fall, leading to low precision scores.
 
-Another approach for automated comparison was presented by Nikiforova et al. \cite{nikiforova2015approach}, who defined a numeric metric named \textit{semantic disance} to quantify the difference between two diagrams as a way to understand missing elements and matches without needing to manually inspect them. The approach consists of computing four independent distance vectors for classes and interfaces, attributes, methods, and associations: for each vector, elements of the corresponding type found in the first diagram are paired with the element in the second with the closest semantic similarity (found by comparing the elements' names); the euclidean vectors are then used to compute the semantic distance for each element type, and for the overall diagram, allowing for a way to understand which areas need to be revised to bring a diagram closer to a reference. An overall distance score of 0 means that two diagrams are equivalent, and higher distance scores mean that the diagram under evaluation is farther from the reference; while the approach is effective for understanding improvement areas, it requires human intervention in case of elements with names that are semantically equivalent but lexically different, since they would not be considered a valid match. 
+Another approach for automated comparison was presented by Nikiforova et al. \cite{nikiforova2015approach}, who defined a numeric metric named \textit{semantic distance} to quantify the difference between two diagrams as a way to understand missing elements and matches without needing to manually inspect them. The approach consists of computing four independent distance vectors for classes and interfaces, attributes, methods, and associations: for each vector, elements of the corresponding type found in the first diagram are paired with the element in the second with the closest semantic similarity (found by comparing the elements' names); the euclidean vectors are then used to compute the semantic distance for each element type, and for the overall diagram, allowing for a way to understand which areas need to be revised to bring a diagram closer to a reference. An overall distance score of 0 means that two diagrams are equivalent, and higher distance scores mean that the diagram under evaluation is farther from the reference; while the approach is effective for understanding improvement areas, it requires human intervention in case of elements with names that are semantically equivalent but lexically different, since they would not be considered a valid match. 
 
 UMLGrade \cite{farias2020whats} is presented as a six-step pipeline where a teacher can define the reference diagram and evaluation criteria, and an automated comparison can then be performed between said reference and student-produced diagrams, resulting in a report that covers semantic and syntax aspects, as well as adherence to design rules and object-oriented development principles, and readability, going beyond simple structural comparison. It can be seen as a way to emulate the evaluation process performed by a teacher, and allows multiple ways to convey the same concept, allowing for more variety in the space of accepted student solutions. 
 
@@ -29,18 +36,102 @@ Bian et al. \cite{bian2019automated} identified the problem of variants and alte
 
 Lastly, Wodel-EDU \cite{gomezabajo2017dsl} implements a different approach: rather than automatically evaluating student-produced diagrams compared to a reference, it produces variants, or \textit{mutants}, of said reference and asks students to identify the correct model. This is achieved through the domain specific language (DSL) Wodel \cite{gomezabajo2016wodel}, which can be applied to any type of modeling language according to a changeable metamodel and allows for multiple operations such as creating, editing, or deleting objects with multiple selection criteria and support for computing static and dynamic element coverage. 
 
+\subsubsection{Automated Generation of UML Class Diagrams}
+
+In addition to the tools and approaches described in the previous subsection for automated class diagram assessments, the related research literature also presented approaches for automatically generating such type of diagrams from natural language requirements via multiple techniques, showing relatively limited success. 
+
+Visual Narrator \cite{robeer2016automated} is one example of these tools, extracting conceptual models from user stories (requirements expressed in the format \textit{As an <actor> I want to <goal> so that I can <gain>}) through a pipeline of eleven natural language processing heuristics such as part-of-speech tagging to identify nouns, verbs, and adjectives, chunking of phrases, and resolution of common references. The tool was tested on two case studies, achieving precision and recall scores between 80\% and 92\%, indicating the potential effectiveness of the tool.
+
+A similar approach was presented by Yang and Sahraoui \cite{yang2022towards}, who proposed a grammar-based pipeline to extract class diagram from specifications expressed in natural language with sentence classification being used as the basis for the generation of diagram fragments; however, the limited precision and recall scores achieved on the dataset used to evaluate the solution led the authors to conclude that rule-based methods do not have enough semantic flexibility to allow for complete specification of the requirements.
+
+A machine learning reliant approach was instead introduced by Saini et al. \cite{saini2022machine}, whose incremental and interactive tool for domain modeling allowed humans to partake in the requirements extraction process, correcting the produced artifacts and demonstrating that a fully automated approach is less effective compared to an iterative process that supports automation with human oversight.
+
+Other tools were developed with a focus on educational use, allowing for the generation of UML diagram exercises. One such tool is AutoER \cite{foss2022automatic}, that supports automatic generation of UML diagrams and subsequent variants through the randomization of element names and relationship parameters. These variants can then be used to compose exercises where students can mark the diagrams and receive feedback by interacting with the exercise's accompanying textual description. Lastly, the Wodel-EDU framework was integrated in the online educational platform Moodle \cite{gomez2023automated}, integrating seven types of domain-independent exercises automatically generated with the mutants, allowing for automated grading and feedback .
+
 
 
 \section{Gamification}
 
 Gamification is a concept that has been formally defined in 2011 by Deterding et al. \cite{deterding_game_2011} as \emph{the use of game design elements in non-recreational contexts}; its intended goal is to enhance activities that are considered unappealing, unpleasant, or uninteresting by increasing user motivation and interest, with improvements in performance being another possible benefit.
 
-This puts
+The formal definition is purposely agnostic in relation of which elements should be applied, given that the different elements may have varying effects and may thus be better suited for specific contexts. The categorization by Werbach and Hunter \cite{werbach2012win} identified a three-tiered hierarchy, distinguishing game mechanics between: I) components, concrete, tangible elements such as points, badges, leaderboards; II) mechanics, rules that guide player behavior such as challenges, competition, or cooperation; III) dynamics, system-level phenomena that support motivational aspects such as emotions, relationships, progression, and emerge better over continuous use. Thanks to the hierarchy, it is possible to identify which game mechanics depend on a surface level with little reasoning (e.g., adding a point-based leaderboard), and which are implemented in educational aspects as a consequence of a motivational design.
+
+It must be observed, however, that not all game elements can be equally effective in practice: a meta-analysis of empirical studies adopting gamification \cite{hamari2014does} showed that, while gamification leads to positive outcomes in the majority of cases, the scale of positive effects strongly depend on both the implementation context and the characteristics of the intended users; for example, leaderboards and other competitive elements may alienate certain users and make them feel less motivated to continue interacting with gamified tool.
+
+To understand the psychological foundations behind gamification, it is necessary to distinguish between intrinsic and extrinsic. Intrinsic motivation is agreed upon as the act of performing activities for inherent satisfaction, where individuals derive enjoyment from the processes they are undertaking and feel motivated to take on new challenges for the sake of it; extrinsic motivation is instead considered as the behavior driven by factors that are outside of one's control such as material rewards, social recognition, or even negative effects and punishments that increase pressure to complete certain activities.  
+
+Motivational aspects derived from this distinction are usually explained according to Self Determination Theory (SDT) \cite{deci2000intrinsic}: intrinsic motivation relies on satisfying three basic psychological needs such as competence (feeling capable and observing the effects of one's actions), autonomy (experiencing choices and being allowed to have multiple directions and options to perform tasks), and relatedness (being connected to other people). Gamification approaches should be designed to cover all three needs with carefully selected mechanics: the use of progression mechanics such as experience points and progress bars support competence and make one's growth easy to observe; avatars, storytelling, and customization options allow one to express themselves autonomously; lastly, cooperative and competitive mechanisms such as leaderboards and group-based tasks implement relatedness to others. Intrinsic motivators are necessary, and should be the guiding force behind the design of gamified tools and approaches: if game elements rely on extrinsic motivators such as points or rewards users may feel less inclined to interact with the game environment over time, leading to progressive loss of motivation.
+
+Among the several frameworks that have emerged over the years to categorize game mechanics and guide the creation of gamified solution, Octalysis \cite{chou2015actionable} is particularly remarkable due to how it identifies the three needs with intrinsic and extrinsic motivators and sorts them according to eight distinct \textit{Core Drives}, dimensions under which game mechanics can be categorized depending on whether they bring intrinsic or extrinsic motivators, as well as whether their motivational effect is derived from positive or negative impact; for example, rewards for correct actions, social recognition, feedback after one's choices are positive motivators, while penalties in case of errors, resource scarcity, or limited content are negative motivators. The eight Core Drives are summarized in Table \ref{tab:octalysis_core_drives}, with a brief description of each, together with examples of corresponding game mechanics and an indication of whether the drive is a positive or negative motivator, as well as an intrinsic or extrinsic one.
+
+\begin{table*}[ht]
+\centering
+\footnotesize
+\caption{Core Drives defined in the Octalysis framework, with motivational classification and example mechanics.}
+\label{tab:octalysis_core_drives}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}p{3.2cm}p{6cm}p{2cm}p{2cm}p{4.5cm}@{}}
+\toprule
+\textbf{Core Drive} & \textbf{Description} & \textbf{Intrinsic /} \newline \textbf{Extrinsic} & \textbf{Positive /} \newline \textbf{Negative} & \textbf{Example Mechanics} \\
+\midrule
+
+\emph{Epic Meaning} \newline \emph{and Calling} &
+The feeling that one's actions contribute to something greater; feeling part of a broader, shared mission; feeling to be contributing to a common goal. &
+Intrinsic & Positive &
+Lore and narrative, community-driven quests, collaborative world-building \\
+\addlinespace
+
+\emph{Accomplishment} &
+Being guided by the desire to make progress, develop skills, and overcome meaningful challenges; feeling the significance of rewards only after earning them through genuine effort. &
+Intrinsic & Positive &
+Experience points, achievement badges, skill trees, progress bars \\
+\addlinespace
+
+\emph{Empowerment} \newline \emph{of Creativity} \newline \emph{and Feedback} &
+Deriving motivation by being able to express oneself, to experiment with different strategies and combinations of actions, and to receive meaningful feedback that validates one's actions. &
+Intrinsic & Positive &
+Open-ended challenges, immediate feedback, customization options, sandbox modes \\
+\addlinespace
+
+\emph{Ownership} \newline \emph{and Possession} &
+Feeling ownership over virtual or tangible goods, with the consequent drive to protect and improve what is owned, accumulate new items, and invest more time in the system. &
+Extrinsic & Positive &
+Virtual currencies, avatar customization, inventory systems, collectibles \\
+\addlinespace
+
+\emph{Social Influence} \newline \emph{and Relatedness} &
+Adhering to social dynamics such as acceptance, companionship, competition, and envy; feeling driven to act after observing peers achieve goals or acquire rare rewards. &
+Intrinsic & Positive &
+Leaderboards, cooperative tasks, guilds and teams, social recognition \\
+\addlinespace
+
+\emph{Scarcity} \newline \emph{and Impatience} &
+Being drawn to elements that are scarce or difficult to obtain; drawing interest in something that cannot be obtained immediately and putting sustained effort and commitment in a system as a consequence. &
+Extrinsic & Negative &
+Limited-time rewards, locked content, appointment mechanics, exclusive items \\
+\addlinespace
+
+\emph{Unpredictability} \newline \emph{and Curiosity} &
+Feeling engaged in a system thanks to the desire to discover what comes next; being stimulated by varied and unpredictable experiences that reduce monotony and sustain long-term interest. &
+Extrinsic & Positive &
+Random rewards, mystery boxes, surprise events, Easter eggs \\
+\addlinespace
+
+\emph{Loss} \newline \emph{and Avoidance} &
+Acting carefully and promptly in order to avoid negative consequences such as losing something already acquired, or of missing a temporary opportunity. &
+Extrinsic & Negative &
+Penalties, health/life systems, expiring rewards, failure states \\
+
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+
+
 
 
 \begin{comment}
     
-determination theory: the need for competence, the need for autonomy and the need for relatedness  \cite{Sailer, Sailer2, Shi}. 
 
 Gamification learns from the experiences and research developments of the game industry, identifying and extracting those features of games which motivate players and make the experience enjoyable and applying them to different industries and environments \cite{Pedriera}. The game industry, over the years, has refined techniques for optimising human motivation and engagement \cite{Octalysis}, resulting in a set of game elements tailored to human motivation. For example:
 \begin{itemize}
@@ -49,21 +140,8 @@ Gamification learns from the experiences and research developments of the game i
     \item the need for connection has been addressed with meaningful storylines centred around the player, cooperative gameplay (with real or simulated players) \cite{Sailer}, and through game-related discussion forums \cite{Wee}.
 \end{itemize} 
 These game elements over the last decade have been applied to non-game contexts with increasing frequency. 
-
-Games have been around for centuries; however, gamification as a concept was only recently formally established, with the term's first documented use in 2008 \cite{Deterding}. Gamification initially emerged from the marketing and digital media industry, then experienced widespread adoption in mid-2010 \cite{Deterding, Alhammad}. The idea that gamification could be used to improve the motivation of users was widely accepted \cite{Sailer}. However, conclusive evidence to support this hypothesis was lacking \cite{Sailer2, Pedriera}. 
+ The idea that gamification could be used to improve the motivation of users was widely accepted \cite{Sailer}. However, conclusive evidence to support this hypothesis was lacking \cite{Sailer2, Pedriera}. 
 There are many examples of frameworks for gamified systems: the framework named Octalysis, theorized by Chou \cite{chou2015actionable}, was chosen as the basis for defining the gamified elements used in this study.
-
-Octalysis defines eight main points, named \textbf{Core Drives}  (see Figure \ref{fig:octalysis}) to evaluate and define a gamified system:
-\begin{enumerate}
-    \item \textbf{Epic Meaning and Calling:} the feeling users have when they believe that they are doing something greater than themselves, or that they have been \emph{chosen} for something. This is usually applied when users dedicate their time to creating something new for their community;
-    \item \textbf{Accomplishment:} the internal drive of making progress, developing skills, and eventually overcoming challenges. Considered a necessary drive, as rewards without a challenge behind them are viewed as meaningless, as well as the easiest one to design;
-    \item \textbf{Empowerment of Creativity and Feedback:} the feeling of being part of a creative process which encourages users to repeatedly figure things out, and try new combinations of actions. It is important to allow users to express their creativity, show the results of said creativity, receive new feedback and then respond in turn;
-    \item \textbf{Ownership and Possession:} the drive works by making users feel like they own something, innately guiding them to actions that improve what they already own and that make them own new things. This likely leads to users spending more time on customising their avatars in gamified systems, as well as users also hoarding virtual currencies;
-    \item \textbf{Social Influence and Relatedness:} this drive incorporates the social elements that motivate people, such as acceptance, companionship, competition and envy. Seeing friends being particularly skilled at some activity or in possession of some rare or valuable elements can be an excellent motivator to try and reach the same heights;
-    \item \textbf{Scarcity and Impatience:} the feeling of wanting something because it is not possible to have it already; delaying the unlocking of something motivates people to think about it for a long time;
-    \item \textbf{Unpredictability and Curiosity:} the drive of wanting to find out what happens next, as the feeling of the unknown engages the brain and makes people think about the gamified system;
-    \item \textbf{Loss and Avoidance:} a Core Drive based upon the avoidance of something negative happening. Particularly strong with limited opportunities that can fade away, as it drives people to act immediately to avoid losing something forever. 
-\end{enumerate}
 
 
 
@@ -199,6 +277,16 @@ You are not a psychology thesis.
 
 \subsection{Gamification in Educational Contexts}
 
+The use of gamification for educational support has been extensively studied ever since its formal definition, leading to the creation of a growing body of empirical evidence on both its potential effectiveness and its limitations. A systematic mapping over 69 publications \cite{dicheva2015gamification} identified the most commonly used elements in the form of points, badges, and leaderboards, found that the educational domains where gamification is applied the most are computer science and programming education, and, most importantly, identified two key limitations: most of the studies analyzed lacked rigorous empirical education and relied more on anecdotal evidence, with few controlled experiments to support claims; another relevant issue was the absence of theoretical grounding, since very few studies justified design choices with motivational theory or validated gamification frameworks.
+
+The literature review by Hamari et al. \cite{hamari2014does} addressed the effectiveness of gamification in the educational domain, reviewing specifically empirical studies that used it as a strategy: most of the educational studies reported positive outcomes in terms of student engagement and participation; however, a key limitation had emerged in relation to the dependency on the context in which gamification is used, which in turn may lead to negative or neutral results if the design of gamified tool is not built adequately (e.g., an excessive focus on extrinsic motivators or rewards for the sake of rewarding). 
+
+Among the earliest examples of gamification being used in engineering courses showed that the adoption of experience points, levels, badges, and challenges led to significant increases in lecture attendance, participation on the course's online platform, and students reported feeling more motivated, finding the course more engaging and interesting compared to traditional lectures \cite{barata2013engaging}. 
+
+However, other early studies showed more mixed results \cite{dominguez2013gamifying}: while the use of a gamified plugin for an e-learning platform led to higher grades for practical assignment and end-of-course evaluations, students who used the plugin performed worse on written tasks and participated less actively during lectures, suggesting that game mechanics may shift the focus from learning to simply accumulating points and rewards. A longitudinal study by Hanus and Fox \cite{hanus2015assessing} yielded similar results: the comparison of a course with leaderboards and badges as motivating elements with a non-gamified equivalent course over 16 weeks found that students in the gamified course eventually showed less intrinsic motivation, satisfaction, and empowerment, participating less in activities, and eventually achieving lower grades in the final exam. The two studies support the importance of designing gamified educational tools with care, and suggest that adding competitive mechanisms may not be beneficial in all scenarios.
+
+A systematic mapping on the negative effects of gamification \cite{toda2017dark} found that there are four main categories to consider: the reduction of performance, the gradual loss of motivation, undesired behaviors, and student indifference, with causes behind these issues being inadequate planning of the gamified experience, excessive competition, penalization, and long-term use that makes students feel less interested in interacting with the gamified solutions. The authors then followed up on their review with a taxonomy of game elements across five categories (Performance, Social, Personal, Ecological, Fictional) to support practitioners in the selection of game elements aligned with their specific goals instead of choosing commonly used mechanics \cite{toda2019taxonomy}.
+
 \begin{comment}
     
 2.2.2 Gamification in Educational Contexts
@@ -259,7 +347,7 @@ End with something like:
 While gamification has been extensively investigated in general educational settings, its application to software engineering education, and in particular to modeling and testing activities, remains limited and fragmented.
 
 \end{comment}
-\subsection{Gamification in Software Testing}
+%\subsection{Gamification in Software Testing}
 
 \begin{comment}
     
@@ -315,94 +403,39 @@ Gamification in software testing remains largely unexplored in educational conte
 
 \end{comment}
 \subsection{Gamification in Software Modeling}
-\begin{comment}
-    
-2.2.5 Gamification in Software Modeling
-This is your core positioning subsection
 
-Here you should:
-
-Review existing tools or proposals
-
-Highlight:
-
-ad-hoc designs
-
-lack of theoretical grounding
-
-absence of reusable frameworks
-
-short-term or anecdotal evaluations
-
-You can explicitly say:
-
-Most approaches gamify outcomes, not process
-
-Few tools support iterative learning
-
-Little support for instructors
-
-Conclude strongly:
-
-To the best of our knowledge, no unified gamification framework specifically designed for software modeling activities has been proposed and empirically validated across multiple tools and contexts.
-
-➡️ This is the launchpad for Chapter 3.
-
-\end{comment}
 \section{Artificial Intelligence and Large Language Models}
 
-\begin{comment}
-    \subsection{UML and Software Modeling Quality}
-\label{sec:llm4mde:bg:uml}
+Large Language Models (LLMs) are neural sequence-to-sequence models built upon the Transformer architecture \cite{vaswani2017attention}, and are considered a significant advancement on neural architectures thanks to self-attention mechanisms and positional encoding, allowing for easy training on massive textual datasets and superior performance on text processing; LLMs are trained to be text predictors that divide text into tokens and, depending on their training data, produce compatible output depending on the input they receive, which is conventionally named a \textit{prompt}; these architecture can be trained to be used for general-purpose tasks or fine-tuned so that they are better aligned to a specific goal.
 
-The Unified Modeling Language (UML) is the de-facto standard visual notation for software design and documentation~\cite{rumbaugh2004unified}. Among the diagram types it defines, \textit{class diagrams} and \textit{use case diagrams} occupy a central position in requirements engineering and conceptual modeling. Class diagrams describe the static structure of a system — its classes, attributes, methods, and associations — and are the most widely adopted notation for object-oriented domain modeling~\cite{fowler2003uml}. Use case diagrams, by contrast, capture the functional boundary of a system in terms of actors and the goals they pursue, providing a compact framework for requirements elicitation and communication~\cite{bittner2003use}.
+The most influential family of LLMs, as well as the one synonymous with artificial intelligence for everyday use, is the GPT series developed by OpenAI: the first model to be made available for public use through a chat interface (the so-called ChatGPT) was GPT-3 at the end of 2022, and demonstrated that scaling the size of a model to 175 billion parameters for training shows relevant capabilities related to instruction following, learning from the context of a prompt and the examples it contains, and structured text generation \cite{brown2020language}. The GPT-4 model released in 2023 \cite{openai2023gpt4} extended these capabilities even further, with improvements such as more precise reasoning, longer context windows (the length, measured in tokens, of messages that can be parsed by the model at a given time), and multimodal support, allowing for input, as well as the production of answers, in non-textual form (e.g., images).
 
-Producing accurate and complete UML diagrams from natural language requirements is a challenging cognitive task. It requires the practitioner to simultaneously master the syntactic rules of the notation, correctly map domain concepts to modeling constructs, and maintain coherence with stakeholder expectations~\cite{koznov2007uml}. These difficulties are amplified in educational settings, where students are still developing both domain knowledge and modeling fluency.
+Following the release of ChatGPT, the LLM landscape expanded in 2023-2024 with multiple competing model families emerging such as Gemini \cite{anil2023gemini}, released by Google DeepMind as a set of multimodal agents whose strengths lied in structured text generation and contextual understanding, Meta's LLaMA \cite{touvron2023llama}, a family of publicly available models that allowed for the birth of fine-tuned derivatives for research use, Qwen \cite{bai2023qwen} by the Alibaba Group, focused on strong code generation capabilities, and DeepSeek \cite{deepseek2024}, a family of open source models optimized for code and reasoning that showed competitive performance in comparison to the existing proprietary models.
 
-The quality of UML class diagrams has been studied systematically in the software engineering literature. Bolloju and Leung~\cite{bolloju2006assisting} proposed a three-dimensional quality framework that partitions diagram quality into: (i)~\textbf{syntactic quality}, which verifies adherence to the structural rules of UML (e.g., correct use of symbols, presence of cardinality labels, appropriate naming); (ii)~\textbf{semantic quality}, which evaluates the accuracy and completeness of the domain representation (e.g., correct cardinalities, appropriate choice between association and aggregation, correct placement of attributes); and (iii)~\textbf{pragmatic quality}, which addresses the understandability of the diagram for its intended stakeholders (e.g., absence of redundancy, consistent styling). This framework has been widely adopted in empirical studies of UML quality and is used consistently across all the studies presented in this chapter.
+Given their novelty at the time the PhD was being conducted, multiple surveys explored the application of LLMs to software engineering tasks. A 2023 survey on the emerging research works of LLMs for software engineering \cite{fan2023large} found applications for coding, documentation, software testing, design and requirements activities, and highlighted that LLM capabilities such as creativity and ability to understand and follow instructions could allow for automation opportunities in multiple phases of the software lifecycle, while also pointing out the risks tied to hallucinations (the scenario where an LLM's textual output is nonsensical or inconsistent with the input received, while giving the impression of being natural and fluent despite being incorrect \cite{ji2023survey}) that require careful human intervention and validation.
 
-To compare two class diagrams numerically, Nikiforova et al.~\cite{nikiforova2015approach} proposed a semantics-based distance measure that decomposes the difference between a proposed diagram and a reference solution into four distance vectors covering classes and interfaces, attributes, methods, and relationships. The aggregate Euclidean distance provides a scalar measure of how far a proposed solution is from the reference; a distance of zero indicates an identical diagram. This metric is adopted in three of the four studies of this chapter as a \textit{correctness} measure that is orthogonal to the intrinsic quality dimensions of Bolloju et al.
+A literature review by Hou et al. \cite{hou2023large} analyzed 395 studies and found that, at the beginning of 2024, most empirical work focused on coding tasks, while requirements engineering activities, as well as model-based tasks, were comparatively less common. Multiple investigations were also performed in the early years of LLM diffusion: for example, Ma et al. \cite{ma2023scope} explored the scope of ChatGPT's capabilities for code generation, code review, and program repair, finding strong syntax-level capabilities, as well as significant limitations for more complex tasks and security vulnerabilities in a sizable amount of the generated programs. Other early studies reinforced the importance of evaluating LLM output with attention to semantic correctness according to domain correctness \cite{ozkaya2023application}, and also pointed out that LLMs exhibit the ability to identify core domain entities from textual description, while also pointing out the importance of human oversight and verification \cite{belzner2023large}. 
 
-The quality framework of Lindland et al.~\cite{lindland1994understanding} offers a complementary theoretical perspective: it frames conceptual modeling quality in terms of the correspondence between a model and its intended domain (semantic quality) and the correspondence between the model and the understanding of its readers (pragmatic quality), alongside the syntactic well-formedness of the notation. This framework, originally defined for conceptual modeling in general, has been applied to UML class diagram evaluation in the most recent study of this chapter (Section~\ref{sec:llm4mde:study4}).
-
-\subsection{Large Language Models in Software Engineering}
-\label{sec:llm4mde:bg:llm}
-
-Large Language Models (LLMs) are neural language models trained on large-scale corpora of natural language and code text using the Transformer architecture~\cite{vaswani2017attention}. The most prominent families include OpenAI's GPT series~\cite{brown2020language,openai2023gpt4}, Google's PaLM/Gemini series~\cite{anil2023gemini}, and a growing ecosystem of open-weight models such as Meta's LLaMA~\cite{touvron2023llama}, Alibaba's Qwen~\cite{bai2023qwen}, and DeepSeek~\cite{deepseek2024}. These models exhibit emergent capabilities in instruction following, multi-step reasoning, and structured text generation that make them appealing for automation tasks beyond natural language generation.
-
-The application of LLMs to Software Engineering (SE) tasks has been the subject of several comprehensive surveys. Fan et al.~\cite{fan2023large} categorized LLM applications in SE into code generation, documentation, testing, and, to a lesser extent, design activities including diagram generation. Hou et al.~\cite{hou2023large} conducted a systematic literature review of LLMs in SE, confirming that the bulk of empirical work concerns code-centric tasks, with requirements engineering and model-based activities receiving comparatively less attention. Ma et al.~\cite{ma2023scope} investigated the scope of ChatGPT specifically for SE tasks, reporting strong results for code synthesis and documentation but noting limitations in tasks requiring structured, constraint-rich outputs — a category that naturally includes UML diagram generation.
-
-Ozkaya~\cite{ozkaya2023application} provided an early assessment of opportunities and risks when deploying LLMs for SE tasks, emphasizing the importance of evaluating LLM outputs not only for syntactic plausibility but also for semantic correctness with respect to domain requirements. Belzner et al.~\cite{belzner2023large} explored LLM-assisted SE more broadly, noting the potential of LLMs to identify core entities in a domain description and draft relational models — a capability directly relevant to class diagram generation.
-
-\subsection{LLMs for UML Model Generation}
-\label{sec:llm4mde:bg:llm4uml}
-
-The application of LLMs specifically to UML diagram generation is a research area that gained momentum in 2023–2024, coinciding with the rapid adoption of GPT-4 and related models.
-
-Arulmohan et al.~\cite{arulmohan2023extracting} published one of the earliest empirical studies on LLM-based class diagram extraction from textual requirements, showing that GPT-based extraction outperformed traditional NLP pipelines. Cam\`{a}ra et al.~\cite{camara2023assessment} reported an experience report on ChatGPT's capability to create UML class diagrams, establishing a conceptual framework for assessing LLM-generated models and suggesting that LLM integration into the modeling process is feasible but requires careful prompt design and human validation. They later extended this work into a proposal for standardized benchmarks for evaluating LLMs on software modeling tasks~\cite{camara2024benchmarks}.
-
-Chen et al.~\cite{chen2023automated} performed a comparative study of LLMs for automated domain modeling, finding that while models showed reasonable domain understanding, they consistently struggled with completeness and adherence to modeling best practices such as correct relationship types and cardinalities. Li et al.~\cite{li2024llm} demonstrated that Chain-of-Thought (CoT) prompting improves the derivation of class diagrams from user stories, particularly in identifying classes, though attribute identification remained challenging.
-
-Beyond class diagrams, Ferrari et al.~\cite{ferrari2024model} evaluated ChatGPT for UML sequence diagram generation, reporting satisfactory completeness but noting issues with ambiguous elements. Herwanto~\cite{herwanto2024automating} assessed GPT-based generation of Data Flow Diagrams, highlighting high accuracy and completeness. Schleifer et al.~\cite{schleifer2024minimal} defined LLM-based pipelines for use case diagram generation from automotive requirements, demonstrating end-to-end feasibility with minimal training data. Zhang et al.~\cite{zhang2024experimenting} developed a prototype integrating LLMs in software development workflows, using use case generation as an intermediate step towards test case synthesis.
-
-On the tool side, Saini et al.~\cite{saini2022machine} explored a machine learning-based approach for incremental interactive domain modeling, while Yang and Sahraoui~\cite{yang2022towards} proposed grammar-based rules for class extraction from natural language, reporting limited precision and recall. Robeer et al.~\cite{robeer2016automated} developed Visual Narrator, a tool converting user stories to conceptual models via NLP, predating the LLM era but establishing relevant benchmarks.
-
-Several studies have highlighted that LLMs are best used as \textit{assistive} tools rather than as autonomous modelers, complementing human judgment rather than replacing it~\cite{shehata2024creating,wang2024llms}.
-
-\subsection{LLMs in Educational Settings}
-\label{sec:llm4mde:bg:education}
-
-The educational dimension of LLM adoption is highly relevant for the studies in this chapter, all of which are framed in a university-level SE curriculum context. Kasneci et al.~\cite{kasneci2023chatgpt} conducted a broad survey of opportunities and challenges of LLMs for education, noting benefits in personalized feedback and content generation alongside risks of academic integrity violations. Sarsa et al.~\cite{sarsa2022automatic} demonstrated the automatic generation of programming exercises and explanations using GPT-3, anticipating the use of LLMs as exercise-generation assistants for computing education. Xiao et al.~\cite{xiao2023evaluating} evaluated LLM-generated reading comprehension exercises at high school level, establishing evaluation criteria that partially inspired the assessment approach adopted in this chapter.
-
-In the context of SE education specifically, Huber and Hagel~\cite{huber2022tool} reviewed tools for teaching UML diagrams, identifying a gap in systems that provide automated, fine-grained feedback on diagram quality. This gap motivates the tool-oriented contribution presented in Section~\ref{sec:llm4mde:study3}.
-
-\subsection{Exercise Evaluation Frameworks and Tools}
-\label{sec:llm4mde:bg:tools}
-
-Automated evaluation of diagram-based exercises has been explored through model mutation and constraint checking. G\'{o}mez-Abajo et al.\ developed Wodel-EDU~\cite{gomez2023automated,gomez2017domain}, a Moodle-integrated tool that generates diagram exercise variants via a domain-specific language for model mutation and evaluates student solutions against teacher-defined constraints. Foss et al.~\cite{foss2022automatic} proposed AutoER, a question generation system for UML database design exercises that compares student diagrams with teacher-defined reference models on named elements. These  systems establish important foundations for the automated evaluation engineenvisioned in the TIGRE tool introduced in Section~\ref{sec:llm4mde:study3}.
-
-\bigskip
-\noindent\textbf{Summary.} The background reviewed above converges on three observations that motivate the work presented in this chapter: (1)~LLMs have demonstrated non-trivial capability for UML diagram generation, but the extent and limits of that capability — across diagram types, prompting strategies, and model families — remain incompletely characterized; (2)~quality assessment frameworks for UML diagrams (Bolloju, Nikiforova, Lindland) provide principled metrics that can be applied to LLM-generated artifacts; (3)~the educational setting provides a tractable and practically relevant context in which LLM performance can be benchmarked against human solvers and used to support instructors and students.
-\end{comment}
+The effectiveness of LLMs also relies on the quality of the prompts used to guide their generation tasks; for this reason, advanced techniques known as \textit{prompt engineering} emerged over time to guide research methodologies beyond unstructured questions. One such technique is called Chain-of-Thought (CoT) prompting \cite{wei2022chain}, and consists of asking an agent to reason step by step before it writes its final answer, eliciting more consistent and structured outputs; this technique is particularly effective in tasks where sequential reasoning is necessary and single-shot prompting may not be sufficient to capture implicit requirements. 
 
 \subsection{Large Language Models for Software Modeling}
+
+The use of LLMs to support model-based tasks such as diagram generation emerged as a topic in 2023, with earlier reviews \cite{fan2023large, hou2023large} pointing out that diagram-based tasks were far less common in empirical studies compared to code-focused activities. 
+
+One of the earliest empirical studies on the topic was conducted by Arulmohan et al. \cite{arulmohan2023extracting}, who compared ChatGPT against an existing, state of the art NLP tool on extracting models from domain specifications: a test on 22 agile product backlogs showed that LLMs outperformed standard NLP pipelines and managed to produce more correct diagrams, but also highlighted the importance of human validation, due to the high variability of the generated output. 
+
+Similar issues were encountered by Câmara et al. \cite{camara2023assessment}, whose experience report on ChatGPT's ability to generate UML class diagrams found that the model was able to produce syntactically correct diagrams with, however, relevant semantic violations such as incorrect association multiplicities and wrong relationship types; the inconsistent output across multiple queries with the same set of requirements was also mentioned as a cause of concern, and drove the definition of a conceptual framework for evaluating LLM-generated diagrams, stating that using LLMs for producing diagram is feasible as long as prompts are designed carefully and humans validate the output. The experience report was followed by a second study \cite{camara2024benchmarks}, where the authors proposed a benchmarking framework for evaluating LLMs on software modeling activities to enable consistent and reproducible comparisons.
+
+A comparative study by Chen et al. \cite{chen2023automated} assessed GPT-3.5 against GPT-4 on ten modeling exercises, finding that LLMs were capable of generating relatively high quality classes and attributes but struggled the most with structural constraints related to associations (type, multiplicity, attribute placing). Lastly, Li et al. \cite{li2024llm} investigated whether the use of Chain-of-Thought prompting could improve class diagram generation compared to simple LLM interaction with guided human extraction. Few-shot CoT prompting was the best method, outperforming guided human extraction in terms of class identification, and struggled the most with attribute identification, suggesting a division of concerns where LLMs propose the base structure and human experts provide refinement assistance. 
+
+Other modeling notations were also covered beyond class diagrams: UML sequence diagram generation by ChatGPT was studied by Ferrari et al. \cite{ferrari2024model}, observing that the generation based on 28 sets of natural language requirements yielded satisfactory models in terms of lexical consistency and syntactic adherence to UML standards, while also pointing out that significant completeness and correctness problems arise when the requirements used to generate models are ambiguous or inconsistent. 
+
+An assessment of four models (GPT-3.5, GPT-4, LLaMA-2, Mixtral) focused on generating Data Flow Diagrams from user stories \cite{herwanto2024automating} found that the proprietary GPT-4 achieved the best results in terms of completeness, while also pointing out the comparable performance of the open source option Mixtral, indicating that less general-purpose models may be an option for integrating LLMs in modeling related tasks, while reinforcing the importance of human oversight through dedicated editing interfaces.
+
+Schleifer et al. \cite{schleifer2024minimal} defined two pipelines for generating use case diagrams from requirement specifications, observing the effects of named entity recognition combined with active learning against prompt engineering with generative models, finding that the generation process is feasible even with minimal training data and that LLMs can generalize over different application domains without requiring specific fine tuning.
+
+Studies have also explored the use of LLMs for modeling tasks as assistive tools instead of autonomous model generators: an example is the study by Wang et al. \cite{wang2024llms}, who had 45 undergraduate students generate use case, class, and sequence diagrams with LLM support. Findings showed that LLM integration can accelerate the drafting process, while still requiring expert intervention and correction due to the presence of semantic and structural errors.
+
+Other studies are relevant due to their focus on the educational aspects of LLM use for modeling tasks. For example, Kasneci et al. \cite{kasneci2023chatgpt} performed a survey on the opportunities and challenges of LLMs in education, identifying three relevant potential applications such as the production of personalized feedback, the ability to generate tailored example content, and the potential creation of exercises, while also pointing out risks related to academic integrity tied to students using LLMs to produce answers or to students relying excessively on AI-generated content.
+
+Sarsa et al. \cite{sarsa2022automatic} found that OpenAI Codex, one of ChatGPT's precursor technologies, could generate programming assignments and code explanation with low effort, with most of the generated output requiring minimal teacher editing before being ready to use, suggesting potential LLM use for the generation of exercises. 
