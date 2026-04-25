@@ -7,13 +7,18 @@
 %\subsection{Software Testing}
 
 \subsection{Software Modeling and Model Driven Engineering}
+\label{sec:back_mde}
 
-The Unified Modeling Language ... \textbf{to be continued}
+The Unified Modeling Language is a graphical notation commonly adopted throughout different steps of the software engineering process by offering diagram families that support activities such as requirements definition, system and architecture design, use case specification, and activity sequencing. 
 
+Among the various types of diagrams covered by UML, class diagrams are one of the most important and commonly used notations due to their effectiveness for requirements engineering and object-oriented development: through class diagrams it is possible to represent the concepts that compose a system, its design expressed as the combination of hardware and software subsystems, as well as the software classes to implement in code.
 
-Despite being the most commonly used notation for object-oriented design and documentation, UML tends to be underused in both industrial context and academic education, with several studies documenting causes for this gap. A survey asking practitioners and students for perceived difficulties identified limitations such as notation complexity, the necessity of putting effort to keep consistency between diagrams and code, and absence of adequate tools for supporting interactive learning \cite{siau2006identifying}; another investigation on university programming courses conceptualized the issues for UML class diagrams, finding systematic misunderstandings related to object identity, inheritance understanding, and difficulties in representing association semantics that persisted after the learning phase \cite{boustedt2012students}. An observation focused more on the practitioner side found that, during agile development processes, there is a tendency to substitute formal UML representations with informal whiteboards and other, less detailed notations, due to a preference for speed and flexibility against completeness and precision.
+This is achieved with the use of \textit{Classes}, rectangle-shaped elements used to represent sets of objects with common properties and relationships, with each specific instance of a class being called an \textit{Object}; properties are called \textit{Attributes} and are characterized by a unique (for the class) name and a type, with each object having a specific value for each defined attribute; lastly, relationships between classes are expressed with \textit{Associations}, lines that connect two classes and specify a value named \textit{Multiplicity} for both classes: this number states the minimum and maximum number of objects that can be connected in a relationship.
+
+Despite being the most commonly used notation for object-oriented design and documentation, UML tends to be underused in both industrial context and academic education, with several studies documenting causes for this gap. A survey asking practitioners and students for perceived difficulties identified limitations such as notation complexity, the necessity of putting effort to keep consistency between diagrams and code, and absence of adequate tools for supporting interactive learning \cite{siau2006identifying}; another investigation on university programming courses conceptualized the issues for UML class diagrams, finding systematic misunderstandings related to object identity, inheritance understanding, and difficulties in representing association semantics that persisted after the learning phase \cite{boustedt2012students}. An observation focused more on the practitioner side found that, during agile development processes, there is a tendency to substitute formal UML representations with informal whiteboards and other, less detailed notations, due to a preference for speed and flexibility against completeness and precision \cite{stettina2012documentation}.
 
 This low usage of the UML notation has relevant implications on educational aspects: Bogdanova \cite{bogdanova2019towards} showed that a substantial amount of practice is necessary to reach a basic level of proficiency in conceptual modeling, and identified recurring error patterns among learners over the years; the conclusion behind the study is that sustained and personalized feedback is necessary to help students reach a sufficient level of competence: however, providing such assistance is a complex endeavor in large-scale university courses. The need of feedback tailored to students, that does not require teacher intervention and can rather substitute human assessment, is one of the guiding motivation behind the research activities undertaken throughout the PhD.
+
 
 \subsubsection{Automated Evaluation of UML Class Diagrams}
 \label{sec:uml_eval}
@@ -47,6 +52,23 @@ A similar approach was presented by Yang and Sahraoui \cite{yang2022towards}, wh
 A machine learning reliant approach was instead introduced by Saini et al. \cite{saini2022machine}, whose incremental and interactive tool for domain modeling allowed humans to partake in the requirements extraction process, correcting the produced artifacts and demonstrating that a fully automated approach is less effective compared to an iterative process that supports automation with human oversight.
 
 Other tools were developed with a focus on educational use, allowing for the generation of UML diagram exercises. One such tool is AutoER \cite{foss2022automatic}, that supports automatic generation of UML diagrams and subsequent variants through the randomization of element names and relationship parameters. These variants can then be used to compose exercises where students can mark the diagrams and receive feedback by interacting with the exercise's accompanying textual description. Lastly, the Wodel-EDU framework was integrated in the online educational platform Moodle \cite{gomez2023automated}, integrating seven types of domain-independent exercises automatically generated with the mutants, allowing for automated grading and feedback .
+
+\subsubsection{Business Process Modeling and BPMN}
+\label{sec:back_bpmn}
+
+The Business Process Model and Notation (BPMN) is a graphical standard used to standardize the representation of business processes by representing its different elements in order to capture and define activities, rules, actors, and responsibilities involved in the process. The elements that compose a BPMN diagram belong to five distinct categories:
+
+\textbf{Tasks} are also known as Activities and represent the different actions that are performed during a business process and can be distinguished by their type, with \emph{User Tasks} (activities performed by a human actor by using a software application), \emph{Service Tasks} (automated activities performed by software applications), and \emph{Manual Tasks} (activities performed by a human actor without any software intervention) being the three most commonly used ones.
+
+Another important feature offered by Tasks is the fact that they can be used to represent \emph{Sub-Processes}, that is, groupings of multiple elements in sequence that can enable process decomposition effectively and improve the organization and readability of the process model. Tasks are represented as rectangles with curved angles, and can contain a certain icon that distinguishes their type (e.g. a human icon, a hand, gears, a letter, or a plus shape for sub-processes).
+
+\textbf{Flows} are arrows that are used to connect the different elements in a BPMN diagram; the most common and important type is the \emph{Sequence Flow}, which is used to display how elements are sequentially connected (e.g., the element a sequence flow is going out of comes before the element touched by a flow's arrow), while another relevant type is the \emph{Message Flow}, which displays how elements in separate processes exchange information through messages.
+
+\textbf{Events} represent something that can happen through a process without being directly performed by a human actor and impact how it continues, and can be used to begin a process (\emph{Start Events}), impact it during its execution (\emph{Intermediate Events}), or conclude it (\emph{End Events}). They are drawn as a circle and represent various scenarios such as receiving/sending a message to another process, a certain time condition (e.g., a date, the passage of a specific interval of time) becoming true, or internal server errors.
+
+\textbf{Gateways} control the sequence flows inside processes by allowing branching or joining operations; gateways are expected to be represented as pairs, with one having multiple outgoing flows acting as the splitting gateway, followed later in the process by another one of the same type that merges back the branched incoming flows. They can be \emph{Exclusive} (if their outgoing flows are associated with conditions, and only one condition can be true at one time, signifying which flow can proceed), \emph{Parallel} (if all outgoing flows are allowed to proceed at the same time, with no condition associated), \emph{Inclusive} (if their outgoing flows are associated with conditions, and one or more conditions can be true at the same time), or \emph{Event-Based} (if their outgoing flows are followed by events, in which case only one event can have its associated condition become true, specifying which flow can proceed).
+
+\textbf{Pools} are rectangle-shaped containers that represent the different business entities that participate in a process; they can be divided into \emph{Lanes} that specify the various human actors that belong to the same entity and are involved in the process. Pools can also be represented as \emph{Collapsed} if they represent an entity that is involved with the process but is external and thus no information is known about it; communication between different pools and elements inside them is allowed exclusively with message flows.
 
 
 
@@ -403,6 +425,78 @@ Gamification in software testing remains largely unexplored in educational conte
 
 \end{comment}
 \subsection{Gamification in Software Modeling}
+\label{sec:back_gamif_mde}
+
+While gamification has been adopted in multiple ways in educational contexts, examples of its application focused specifically on software modeling activities are somewhat fragmented. The two modeling notations covered by this PhD thesis (BPMN, UML class diagrams) have attracted a growing body of attention from the research community, reflecting the educational importance of these topics together with the need to make their learning more engaging.
+
+Examples of gamification or game-like approaches being used specifically in relation to BPMN modeling are not common in literature: the only example of gamification being used for BPMN is BPMS-Game \cite{mancebo_bpms-game_2017}, a tool that is used in an industrial context to encourage modeling according to good sustainability practices. The rules can be defined by administrators, and the game mechanics employed by the game include badges, achievements, and leaderboard; the tool is not intended for educational use, however, and is more focused toward practical use, making it unsuitable for classroom use.
+
+\GG{la definizione di serious games va nel background}
+Other solutions do exist, but are serious games rather than gamified tools: one such game was described by Marín \cite{marin_lessons_2022}, and gives students a set of challenges with three increasing difficulty levels (basic, medium, advanced); students are given an incomplete process and have to choose the elements needed to complete it out of a set of given ones, and theoretical questions are also included with the exercises to test the students' knowledge of good modeling practices. A score is computed depending on how many elements were used, how many correct answers were given, how much time the student needed, and how correct the resulting diagram was; this score is then used for a leaderboard where students can rank themselves with their peers, and badges can be obtained in case of good performance (e.g., correctly answering all questions in a level, achieving 100\% correctness in an exercise).
+
+Another serious game, that puts more emphasis on competition between groups of students, is BPMN-Wheel \cite{kutun_bpmn_2019}, a board game where two teams of players have to answer theory questions on BPMN modeling practices to gain either in-game currency or elements that can be used to compose a process that has to be represented; the team whose resulting process is the most similar to the target one wins the game.
+
+A broader set of tools has been proposed for UML class diagram education, with both serious games and gamified approaches being developed and discussed as potential solutions to make enhance the learning process and making modeling activities more attractive for students.
+
+A mapping review, which is discussed more in detail in Section \ref{sec:back4}, has been performed to identify the set of relevant studies that discuss game-like approaches that can be applied to conceptual modeling education: following the retrieval of all sources, each study was analyzed to identify the game mechanics it implemented, the adherence to the Octalysis framework in terms of which Core Drives were being followed in the design and, lastly, whether the papers described a gamified tool or a serious game.
+
+Jurgelaitis et al. \cite{jurgelaitis2019implementing} described the use of gamification elements such as points, achievements, leaderboards, and badges to teach UML in a level-based course structure using an online platform where students were asked to answer multiple choice questions on different diagram types; unlockable example diagrams were also implemented with the virtual currency used to unlock them being tied to exercise completion. Results showed that the mechanics improved both the average student scores and their self-declared intrinsic motivation.
+
+A similar approach was implemented with LOOP \cite{krugel2017computational}, an online course focused on object-oriented programming with a block-based editor to draw class diagrams, offering feedback for students as well as visual changes in the application when changing the diagram.
+
+ModelGame \cite{junior2021modelgame} is described as a reference framework that teachers can use to evaluate UML diagrams according to a set of parameters, represented by ten different quality metrics such as scope, syntactic, semantic, detection of inconsistencies, and resolution; it makes use of missions as a way to motivate students, with progression, points, and feedback being tied to adhering to the quality metrics.
+
+A serious game described by Livovský and Porubän \cite{livovsky2014learning} was presented as a 2-dimensional adventure where levels, challenges, and enemies were tied to object-oriented topics through an Object Access Tool used to connect game elements to class diagrams. Modifying the diagram would create new elements in the game, or change the properties of existing ones, while interacting with certain game objects would highlight the corresponding class and activate its methods.
+
+%Bucchiarone et al. presented PapyGame, a gamified modeling environment for Papyrus, and conducted several user evaluations that highlighted positive results \cite{papygame1, papygame2}. The game implements modeling assignments paired with the Hangman game and offers sequential tasks. Successfully completing tasks yields points and allows progression in the game, while failing displays a feedback screen with highlighted errors. Both works share a consensus about the positive impacts of gamification on productivity and learning outcomes for software modeling teaching. 
+
+Another serious game is Classutopia \cite{marin2018learning, larenas2018classutopia}, which consists of a role-playing game that has students act as a robot battling against an evil wizard in a ruined future. Students can interact with class diagrams to customize the robotic avatar's features and abilities, and solving defective diagrams is the main gameplay loop: making changes that improve a diagram's correctness damages the enemy, while errors sabotage the player, and diagram coloring is used to highlight both correct changes and mistakes.
+
+GaMoVR \cite{yigitbas2022gamification, yigitbas2023design} is an innovative gamified solution that has students solve exercises in a virtual reality environment where it is possible to rearrange and connect elements directly. The tool offers different modes of play: one where requirements are given and a solution must be created, with a Hangman game tied to the number of errors made by the student, and another mode where students have to correct a diagram with errors by shooting at the incorrect elements. Gamification elements also include experience points and levels that unlock additional tools and bonuses.
+
+%Denden et al. \cite{Denden2024}  describe an online course on Object Oriented Design Methodology using Moodle. Experience points are obtained by completing learning activities, bonus skill points are awarded for finishing optional teacher assignments, completing a quiz on a specific course topic is rewarded with a badge, and students are ranked in a leaderboard according to their experience points.
+innov8 \cite{boughzala2017feedback} is a serious game that has students play the role of business consultants for a fictional company, with the goal of creating the class diagram that represents a certain set of requirements, gathering the necessary information through playing the game and interacting with non-playable characters. Students can then define a collective solution and compare it to the reference drawn by the teacher, receiving feedback after a comparison. 
+
+Dæhli et al presented LearnER \cite{daehli2021exploring}, a gamified tool that supports Entity-Relationship models in addition to UML, and works by having students select elements out of a set of alternatives to compose the model that best represents the domain described in a textual assignment. Game mechanics include points awarded for completing exercises, hints that can either be obtained by choosing correct elements or bought by reducing the amount of reward points, and leaderboards for the number of points obtained, both overall and for each exercise.
+
+A serious game-based approach was described by Dupuy-Chessa et al. \cite{dupuychessa2015lego}, who applied the concepts of the game Pictionary to diagram modeling: with the game, two teams of students face each other on a board game where cards can be selected; these cards specify the requirements that students have to draw in a limited time window, with teacher feedback being an available option.
+
+%ModelDefenders \cite{modeldefenders1, modeldefenders2} is an educational tool for teaching Model-Driven Engineering that employs a mutation testing strategy: given a class diagram under test, students are divided into attackers and defenders. Defenders define test cases (sequences of actions for the model and their expected output), and attackers make changes to the model to introduce bugs. Mutants are killed if at least one test case has a different output on the mutated diagram compared to the original model.
+
+%PolyGloT-UML \cite{polyglot} is described as a combination of multiple educational tools (Papyrus web editor, 2-dimensional virtual environment) where students can take learning paths and interact with each other in a virtual hub, perform different activities defined by the lecturers (e.g. quizzes, modeling exercises), and complete assignments to earn badges.
+
+Lastly, Sanjaya et al. \cite{sanjaya2020development} theorized a gamified mobile application for gamifying class diagrams, among other software engineering topics, with interactive quizzes focused on system design and requirements definition, using badges, achievements, and rankings as motivational elements.
+
+Table \ref{tab:mapping} summarizes the literature mapping by listing all tools and approaches found and, for each one, whether it is a gamified tool or a serious game, which game mechanics are implemented, and which Core Drives are followed.
+
+{\begin{table*}[ht]
+  \rowcolors{2}{gray!25}{white}
+\centering
+\footnotesize
+\begin{tabular}{@{}p{3cm}p{2.5cm}p{4cm}p{4cm}@{}}
+\toprule
+\textbf{Tool Name} & \textbf{Strategy} & \textbf{Game Mechanics} & \textbf{Octalysis Core Drives} \\
+\midrule
+GamoVR \cite{yigitbas2022gamification, yigitbas2023design} & Gamification & Levels, Points, Unlockable Elements, Feedback & Accomplishment, Loss and Avoidance \\ 
+Moodle course (Jurgelaitis et al.) \cite{jurgelaitis2019implementing} & Gamification & Points, virtual currency, leaderboard, badges & Accomplishment, Ownership \\ 
+LOOP\cite{krugel2017computational} & Serious Game & Feedback & Accomplishment \\ 
+Gamified mobile app \cite{sanjaya2020development} & Gamification & Challenges, badges, leaderboards & Accomplishment \\ 
+LearnER \cite{daehli2021exploring} & Serious Game & Progress, points, hints, feedback, leaderboards & Accomplishment \\ 
+ModelGame \cite{junior2021modelgame} & Gamification & Points, progress, feedback & Accomplishment \\ 
+innov8 \cite{boughzala2017feedback} & Serious Game & Cooperation & Social Influence \\ 
+Pictionary-like \cite{dupuychessa2015lego} & Serious Game & Cooperation, feedback, rewards & Social Influence, Scarcity, Accomplishment \\ 
+%PolyGloT-UML \cite{polyglot} & Gamification & Feedback, challenges, socialization, badges & Accomplishment, Ownership, Social Influence \\ 
+Classutopia \cite{marin2018learning, larenas2018classutopia} & Serious Game & Feedback, Challenges, Unlockable Rewards & Epic Meaning, Accomplishment, Empowerment \\ 
+2D action-adventure game \cite{livovsky2014learning} & Serious Game & Levels, Feedback & Epic Meaning, Accomplishment, Empowerment, Unpredictability \\ 
+%Papygame \cite{papygame1, papygame2} & Gamification & Points, Feedback, Progress, Levels & Accomplishment \\ 
+\bottomrule
+\end{tabular}
+\caption{Summary of existing game-like solutions for UML class diagram education}
+\label{tab:mapping}
+\end{table*}
+
+
+Taken together, the landscape of gamified tools for both BPMN and UML class diagram education reveals a common pattern: existing solutions are rare, focus mostly on single-session use, and tend to rely on the selection of answers out of predefined element sets instead of allowing for free-form diagram construction. The consequent research gap is the need of tools that combine a free modeling environment with automated, gamification-based feedback.
 
 \section{Artificial Intelligence and Large Language Models}
 
