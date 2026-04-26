@@ -223,7 +223,7 @@ The trial was performed in person at Politecnico di Torino for 10 participants, 
 
 Participants were selected via convenience sampling among students of the Masters' degree in Computer Engineering at Politecnico di Torino as representative of students that would learn BPMN during their study career; due to the trial being a preliminary study, a small number of participants was selected, with a total of 12 volunteering students being involved. Participation in the study was rewarded with tangible prizes such as free snacks offered by the thesis student who was overseeing the development of the prototype, Ms. Kylie Bedwell. 
 
-Since the trial consisted of comparing three different implementation of the BIPMIN prototype, the study design needed to ensure that participants could try all three versions to conduct fair judgment; it was thus not possible to adopt a between-subjects technique where each participant would try only one of the three versions of the prototype and there would be no way to compare the differences in game mechanics. For this purpose, a within-subjects design (see Section\ref{sec:empirical_methods}) was selected, so that participants could experience all three versions of the prototype for direct comparison; the design is also more suited for experiments with a small sample of participants, making it the better choice for the pilot study. To mitigate ordering biases, tasks were counter-balanced with the use of a balanced Latin square to ensure participants did not test the prototype with the same configuration; this resulted in a total of 6 different variations of how tasks T3, T4, and T5 were ordered, each assigned to two of the participants, as shown in Table \ref{tab:latinsquare}.
+Since the trial consisted of comparing three different implementation of the BIPMIN prototype, the study design needed to ensure that participants could try all three versions to conduct fair judgment; it was thus not possible to adopt a between-subjects technique where each participant would try only one of the three versions of the prototype and there would be no way to compare the differences in game mechanics. For this purpose, a within-subjects design (see Section \ref{sec:empirical_methods}) was selected, so that participants could experience all three versions of the prototype for direct comparison; the design is also more suited for experiments with a small sample of participants, making it the better choice for the pilot study. To mitigate ordering biases, tasks were counter-balanced with the use of a balanced Latin square to ensure participants did not test the prototype with the same configuration; this resulted in a total of 6 different variations of how tasks T3, T4, and T5 were ordered, each assigned to two of the participants, as shown in Table \ref{tab:latinsquare}.
 
 \begin{table}[H] 
 \centering
@@ -301,7 +301,7 @@ T7 & N/A & \\ \bottomrule
 \end{table}
 
 
-To answer RQ2, which focused on assessing the usability of the BIPMIN prototype, the System Usability Scale (\ref{sec:empirical_methods}) \cite{brooke1996sus} was used, leading to the computation of the final score intended to measure the perceived usability of the BIPMIN prototype.
+To answer RQ2, which focused on assessing the usability of the BIPMIN prototype, the System Usability Scale described in Section \ref{sec:empirical_methods} \cite{brooke1996sus} was used, leading to the computation of the final score intended to measure the perceived usability of the BIPMIN prototype.
 
 To answer RQ3, the three versions of the prototype were developed according to the themes discussed back in Section \ref{sec:proto_tool}, with the corresponding metrics being implemented, keeping the visual aesthetic of the application and the feedback mechanism the same over all three versions.
 
@@ -782,9 +782,6 @@ After collecting all metrics, it was decided to adopt a non-parametric approach 
 
 RQ3 and RQ4, instead, were evaluated through a questionnaire whose answers could not be analyzed with statistical hypothesis testing; the answers were analyzed through descriptive statistics, with a focus on the distribution of scores for Likert-scale questions (RQ3 and RQ4.1). For these questions, the analysis method consisted of computing the average score assigned to each set of questions as the overall opinion for each student, and then plotting the distribution. Lastly, RQ4.2 and RQ4.3 were answered with open-ended questions where students could present their opinions: these answers were analyzed using the open coding strategy from Straussian Grounded Theory (see Section \ref{sec:empirical_methods}) \cite{strauss1998basics}. Each answer was labeled with the most compatible topic from a growing set, with two subsequent passes to refine assignments and identify answers for which multiple topics were suitable.
 
-After all answers had been tagged with a topic, a second pass was performed on all answers and topics, to identify answers that could potentially be assigned a different topic; following this step, a third pass was done to identify answers that could have more that one suitable topic, leading to the assignment of multiple topics to some answers.
-
-
 \subsubsection{Results}
 
 Table \ref{tab:m1stats} lists summary statistics about the metrics selected for answering RQ1, that is, the minimum, maximum, mean, median, and standard deviation of the diagram size of each student's final saved diagram, as well as the number of attempts made by students, computed as the number of evaluation checks performed during each task; these metrics are grouped depending on the exercise first, then on the treatment, and then over both exercises depending on the treatment (with or without gamification). The distributions of the two metrics over the two exercises depending on the application of gamification or not have been represented in a combined box and violin plot, and can be seen in Figure \ref{fig:m1boxplots}.
@@ -1002,6 +999,8 @@ Topics found in the suggestions, instead, touch multiple details: the most commo
 
 
 \subsubsection{Threats to validity}
+
+Threats to validity are discussed following the taxonomy introduced in Section \ref{sec:empirical_methods} \cite{wohlin2012experimentation}.
 
 \textbf{Threats to internal validity} relate mostly to the experimental design being a crossover study: the study was composed of two consecutive tasks, each with a given time limit, implying the possible presence of fatigue effects on the students. Additionally, executing two tasks in immediate sequence means that there could be possible carryover effects by administering a treatment before the effects of a different treatment have been completely received. The experiment design being a 2x2 factorial is helpful in mitigating learning biases; despite that, having students perform the tasks using two different versions of the same tool with one being enhanced means that there could be possible learning effects impacting the results of the second tasks, as a consequence of the students becoming familiar to the basic mechanics of the tool; the crossover design also implies that the second task's results may be impacted by learning and fatigue effects \cite{vegas2016crossover}.
 
