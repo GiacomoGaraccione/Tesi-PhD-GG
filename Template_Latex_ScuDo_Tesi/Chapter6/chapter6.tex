@@ -2,11 +2,11 @@
 \label{ch6}
 \chapter{Intelligent Agents for Software Modeling Tasks}
 
-The three empirical studies described in the previous chapters highlighted the strength of gamification as a motivator for student engagement, as well as an effective tool to support academic growth by increasing diagram quality and grades. The limitations tied to the two tool's evaluation systems, however, reduced their potential benefits, pointing to the need to find a way to extend the set of available solutions beyond the scope of synonyms and structures that can be identified by a single human. 
+The three empirical studies described in the previous chapters highlighted the strength of gamification as a motivator for student engagement, as well as an effective tool to support academic growth by increasing diagram quality and grades. The limitations tied to the two tools' evaluation systems, however, reduced their potential benefits, pointing to the need to find a way to extend the set of available solutions beyond the scope of synonyms and structures that can be identified by a single human. 
 
 Additionally, the diffusion of large language models was becoming more and more common during the 2023-2024 academic year, showing several benefits and applications in the software engineering domain such as code generation and testing. Since the use of LLMs for model based engineering activities was still a relatively unexplored area in Autumn 2023, a new research direction was undertaken, with the goal of identifying ways in which intelligent agents could be used to support MBE activities such as diagram generation or evaluation.
 
-For this purpose, two different research projects began in Autumn 2023, first as Master theses and then as complete studies, with the goal of observing an LLM's ability to generate valid diagram content, aiming to observe whether significant differences existed between the LLM-generated artifacts and student-produced diagrams: exploring this research area would provide insights on how agentic tools could be integrated in the teaching process and also derive guidelines for students on how to make better use of such tools. These two studies, focused respectively on UML class diagrams and UML use case diagrams were presented in \cite{debari2024evaluating} and \cite{garaccione2025vega}.
+For this purpose, two different research projects began in Autumn 2023, first as Master theses and then as complete studies, with the goal of observing an LLM's ability to generate valid diagram content, aiming to observe whether significant differences existed between the LLM-generated artifacts and student-produced diagrams: exploring this research area would provide insights on how agentic tools could be integrated in the teaching process and also derive guidelines for students on how to make better use of such tools. These two studies, focused respectively on UML class diagrams and UML use case diagrams, were presented in \cite{debari2024evaluating} and \cite{garaccione2025vega}.
 
 Following the results of these two studies, a third one was launched to implement a new software that could enhance the solution definition process for class diagrams by introducing LLM support: the architecture was created to be compatible with the Apollon library and create solution drafts starting from textual descriptions, both as editable diagrams and as data structures to be used with the evaluation engine. A preliminary proof of concept analysis was performed with two exercises, comparing the produced output diagrams with the reference solutions of existing exercises, identifying the limits of the architecture and allowing for the definition of next steps that guide the research activities to be performed after the end of the PhD. The new assistant was described in \cite{garaccione2026automated}.
 
@@ -43,17 +43,17 @@ The first study started as a thesis in Autumn 2023, and had the goal of comparin
     Purpose & Comparing artifacts\\
     Focus & Diagram quality, semantic correctness\\
     Context & Definition of UML Class Diagrams\\
-    Stakeholders & Software Modeling Instructors\\
+    Perspective & Software Modeling Instructors\\
     \bottomrule
     \end{tabular}
 \end{table}
 
-\subsubsection{Study Design}
+\subsection{Study Design}
 The first step to conduct the study was to collect exercises to compare LLM-generated and student-produced diagrams with; exercises were selected from various online sources, with the caveat that they had to provide a natural language description written in either English or Italian, and they had to be accompanied by a class diagram showing the intended reference solution. A total of 20 exercises were retrieved, covering several application domains and with a range of difficulties, allowing for multiple levels of comparison. 
 
-Certain constraints were defined before conducting the study on both the student side and the LLM side, to ensure all exercises would be solved with the same conditions. For what concerns the student side, all 20 exercises were solved by the student for their thesis work with constraints set to simulate a real-life exam setting: a maximum of 30 minutes could be spent on solving each exercise, with neither any interaction with other people nor the use of any external sources such as textbooks, notes, or internet queries allowed. Diagrams were produced with the Microsoft Visio modeling tool-
+Certain constraints were defined before conducting the study on both the student side and the LLM side, to ensure all exercises would be solved with the same conditions. For what concerns the student side, all 20 exercises were solved by the student for their thesis work with constraints set to simulate a real-life exam setting: a maximum of 30 minutes could be spent on solving each exercise, with neither any interaction with other people nor the use of any external sources such as textbooks, notes, or internet queries allowed. Diagrams were produced with the Microsoft Visio modeling tool.
 
-Regarding the LLM, the model selected was OpenAI's ChatGPT-4, one of the best performing models at the time the study was conducted in Autumn 2023. No specific prompt engineering strategy was adopted, but rather, a simple prompt stating simply the goal and the format was employed:  
+Regarding the LLM, the model selected was OpenAI's ChatGPT-4, one of the best performing models at the time the study was conducted in Autumn 2023. No specific prompt engineering strategy was adopted, but rather, a simple prompt stating the goal and the format was employed:  
 
 \begin{quote}
 \textit{``Create a UML Class Diagram of the given exercise and give me the
@@ -184,7 +184,7 @@ Distance         & 0.87 & 10.20 & 5.01 (2.36) & 4.24 & 2.24 & 11.54 & 7.25 (2.86
     \label{fig:llm4mod1_rq1}
 \end{figure}
 
-Overall, it can be observed that the LLM agent performed worse compared to the human solver in all four metrics, with the highest difference being observed for the number of semantic errors, where ChatGPT obtained an average error count of 4.85, which is almost three times higher than the average count obtained by the student (1.75); maximum and median scores also accentuate this disparity, given a difference of 7 to 14 and 1 to 5, respectively. The reasonable assumption is that LLMs perform worse compared to humans when it comes to represent domain-specific details. The performance related to syntax and pragmatic errors is more balanced, however, with much lower differences in the average values for both counts. 
+Overall, it can be observed that the LLM agent performed worse compared to the human solver in all four metrics, with the highest difference being observed for the number of semantic errors, where ChatGPT obtained an average error count of 4.85, which is almost three times higher than the average count obtained by the student (1.75); maximum and median scores also accentuate this disparity, given a difference of 7 to 14 and 1 to 5, respectively. The reasonable assumption is that LLMs perform worse compared to humans when it comes to representing domain-specific details. The performance related to syntax and pragmatic errors is more balanced, however, with much lower differences in the average values for both counts. 
 
 The ANOVA tests performed on the three error counts yielded a p-value of 0.206 for syntax errors, one of 6.7e-4 for the semantic count, and a p-value of 0.134 for pragmatic errors. The only statistically significant result is the second one: with the much lower average performance achieved by the LLM, the null hypothesis ${H_{0\_{sem}}}$ can be rejected, and it can be assumed that LLM agents are not yet able to produce class diagrams whose semantic quality is comparable to human-produced ones. The p-values related to the other two error metrics, instead, were not statistically significant, which means that ChatGPT can potentially display understanding of UML modeling rules and practices similar enough to those obtained by a student with sufficient knowledge.
 
@@ -269,7 +269,7 @@ The average estimated difficulty provided statistically significant p-values for
 \subsection{Key Findings}
 \label{sec:llm4mde:study1:discussion}
 
-The results show that an LLM, namely ChatGPT-4, with a single, unstructured, zero-shot prompt, can produce class diagrams that are structurally correct, readable, and understandable: the absence of significant differences for syntax and semantic errors shows that LLMs achieved a good understanding of class diagrams' formal grammar rules, leading to the creation of structurally valid diagrams.
+The results show that an LLM, namely ChatGPT-4, with a single, unstructured, zero-shot prompt, can produce class diagrams that are structurally correct, readable, and understandable: the absence of significant differences for syntax and pragmatic errors shows that LLMs achieved a good understanding of class diagrams' formal grammar rules, leading to the creation of structurally valid diagrams.
 
 However, a statistically significant worse performance for both semantic errors and distance shows that the model struggles to interpret and represent domain characteristics that may not be explicitly stated in the textual requirements. This dissonance between knowledge of syntax criteria and lack of semantic understanding suggests that LLMs struggle with domain-dependent constraints, and may not yet be effective for generating complete diagrams in educational context (e.g., examples of correct models, solutions for assignments), or even for industrial use during requirements definition or design specification.
 
@@ -302,7 +302,7 @@ The second study followed a similar design and approach as the first one, being 
     Purpose & Comparing artifacts\\
     Focus & Diagram completeness, redundancy\\
     Context & Definition of UML Use Case Diagrams\\
-    Stakeholders & Software Modeling Instructors\\
+    Perspective & Software Modeling Instructors\\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -342,7 +342,7 @@ Exercise & Actors & Use Cases & Includes & Extends \\
 \end{tabular}
 \end{table}
 
-Similar constraints to those adopted in the first study were used to guide the creation of diagrams for both the human solver (the thesis student) and the LLM. The student had up to 30 minutes to solve each exercise, without the support of any external support, notes, or internet access, and produced diagrams using the Signavio Academic suite. The LLM agent selected to generate diagrams was, once more, ChatGPT-4, since the diagram generation process was performed in Winter 2023, when said model was still one of the better performing LLMs; again, no specific prompting strategy was adopted, but the request was slightly expanded to provide the context and specify certain additional requirements (e.g., generalizations between actors, inclusion and extension of use cases). The prompt used is as follows:
+Similar constraints to those adopted in the first study were used to guide the creation of diagrams for both the human solver (the thesis student) and the LLM. The student had up to 30 minutes to solve each exercise, without any external support, notes, or internet access, and produced diagrams using the Signavio Academic suite. The LLM agent selected to generate diagrams was, once more, ChatGPT-4, since the diagram generation process was performed in Winter 2023, when said model was still one of the better performing LLMs; again, no specific prompting strategy was adopted, but the request was slightly expanded to provide the context and specify certain additional requirements (e.g., generalizations between actors, inclusion and extension of use cases). The prompt used is as follows:
 
 \begin{quote}
 \textit{``The following should be textually analyzed, and a use case diagram created containing several use cases. Identify the actors, use cases, and associations. Please, use the user goal level approach. Also, please consider any possible generalization relationship between use cases or between actors, and any possible `include' or `extend' relationship between use cases. Please give me the PlantUML code for the use case diagram corresponding to the following text: (TEXT)''}
@@ -391,8 +391,8 @@ Table \ref{tab:rq_llm4mod2} summarizes the statistics obtained for the completen
 \cmidrule(lr){2-5}\cmidrule(lr){6-9}
 Metric & Min & Max & Mean (SD) & Median & Min & Max & Mean (SD) & Median \\
 \midrule
-Completeness Rate & 0.29 & 1.00 & 0.82 (0.24) & 0.91 & 0.36 & 1.00 & 0.73 (0.23) & 0.11 \\
-Redundancy Rate   & 0.00 & 0.50 & 0.17 (0.16) & 0.75 & 0.00 & 0.63 & 0.21 (0.21) & 0.13 \\
+Completeness Rate & 0.29 & 1.00 & 0.82 (0.24) & 0.91 & 0.36 & 1.00 & 0.73 (0.23) & 0.75 \\
+Redundancy Rate   & 0.00 & 0.50 & 0.17 (0.16) & 0.11 & 0.00 & 0.63 & 0.21 (0.21) & 0.13 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -415,7 +415,7 @@ Redundancy Rate   & 0.00 & 0.50 & 0.17 (0.16) & 0.75 & 0.00 & 0.63 & 0.21 (0.21)
     \label{fig:llm4mod2_rq}
 \end{figure}
 
-For what concerns correctness, it can be observed that, on average, the human solver performed better compared to the LLM, obtaining an average completeness rate of 82\% against 73\%. It is interesting to observe the differences in performance per each exercise, as shown by Figure \ref{fig:llm4mod2_compdiff}: the LLM managed to reach the same completeness score as the student in 5 exercises, with four of these also obtaining a 100\% score, and, in two exercises, the score obtained by the agent was in fact higher; the latter two exercises also show a fairly high number of required use cases and actors, showing a good ability to capture key concepts. The Wilcoxon test obtained a p-value of 0.224, which is not statistically significant: ${H_{0\_{compl}}}$ cannot be rejected, and it can be said that LLM agents are not inherently worse than humans when it comes to producing UML use case diagrams.
+For what concerns correctness, it can be observed that, on average, the human solver performed better compared to the LLM, obtaining an average completeness rate of 82\% against 73\%. It is interesting to observe the differences in performance per each exercise, as shown by Figure \ref{fig:llm4mod2_rq_diff}: the LLM managed to reach the same completeness score as the student in 5 exercises, with four of these also obtaining a 100\% score, and, in two exercises, the score obtained by the agent was in fact higher; the latter two exercises also show a fairly high number of required use cases and actors, showing a good ability to capture key concepts. The Wilcoxon test obtained a p-value of 0.224, which is not statistically significant: ${H_{0\_{compl}}}$ cannot be rejected, and it can be said that LLM agents are not inherently worse than humans when it comes to producing UML use case diagrams.
 
 \answer{RQ1 (Study 2)}{No significant differences were observed in terms of the correctness of the produced diagrams: while the LLM agent generally performed worse, the ability to represent most of the necessary actors and goals suggests potential use of the technology to produce preliminary diagrams that can become satisfactory following human refinement.}
 
@@ -434,10 +434,10 @@ For what concerns correctness, it can be observed that, on average, the human so
         \label{fig:llm4mod2_reddiff}
     \end{subfigure}
     \caption{Differences in performance observed in the second study}
-    \label{fig:llm4mod2_rq}
+    \label{fig:llm4mod2_rq_diff}
 \end{figure}
 
-A similar performance was achieved with regards to the redundancy rate: for this metric as well, the LLM performed slightly worse than the human solver (21\% rate against 17\%), indicating that, on average, a fifth of the elements added by an agent are not necessary to represent a correct diagram. The differences in performance with the human solver were more balanced, as can be seen in Figure \ref{fig:llm4mod2_reddiff}: the LLM managed to obtain a lower rate in four exercises, an equal rate in five, and also produced four exercises where all included elements were considered correct (0\% completeness rate). The p-value obtained with the statistical test was 0.556, indicating no statistically significant difference between human and LLM performance: LLMs can be considered comparable to humans when it comes to adding incorrect elements to their use case diagrams.
+A similar performance was achieved with regards to the redundancy rate: for this metric as well, the LLM performed slightly worse than the human solver (21\% rate against 17\%), indicating that, on average, a fifth of the elements added by an agent are not necessary to represent a correct diagram. The differences in performance with the human solver were more balanced, as can be seen in Figure \ref{fig:llm4mod2_reddiff}: the LLM managed to obtain a lower rate in four exercises, an equal rate in five, and also produced four exercises where all included elements were considered correct (0\% redundancy rate). The p-value obtained with the statistical test was 0.556, indicating no statistically significant difference between human and LLM performance: LLMs can be considered comparable to humans when it comes to adding incorrect elements to their use case diagrams.
 
 An observation of both metrics in conjunction showed that the student outperformed the agent in most cases, producing eight diagrams with maximum completeness, four with 0 redundancy, and two diagrams with both conditions true at the same time, while the LLM only managed to produce 4 diagrams with maximum completeness and four with no redundant elements; no LLM diagram could be considered completely correct by having both 100\% completeness and 0\% redundancy.
 
@@ -455,23 +455,23 @@ An observation of both metrics in conjunction showed that the student outperform
 
 \subsection{Key Findings}
 
-The results of the second study showed that LLMs have a performance comparatively similar to that of human solvers when it comes to producing UML use case diagram, showing an ability to generate complete diagrams without significant differences, in contrast with what was found with the first study, where the same agent displayed much worse ability to generate semantically valid diagrams. 
+The results of the second study showed that LLMs have a performance comparatively similar to that of human solvers when it comes to producing UML use case diagrams, showing an ability to generate complete diagrams without significant differences, in contrast with what was found with the first study, where the same agent displayed much worse ability to generate semantically valid diagrams. 
 
-This divergence may be tied to the structural differences of the two notations: use case diagrams are conceived to capture functional requirements at an high abstraction level, requiring the specification of actors and goals without specific constraints related to typings, multiplicity, and advanced relationship representations. Conversely, class diagrams require much higher semantic understanding and domain knowledge, with constraints such as association cardinality, association types, attribute representation, and alternative ways to express mandatory concepts, making the generation of such models much more complex, requiring additional skill and knowledge beyond language understanding and goal identification.
+This divergence may be tied to the structural differences of the two notations: use case diagrams are conceived to capture functional requirements at a high abstraction level, requiring the specification of actors and goals without specific constraints related to typing, multiplicity, and advanced relationship representations. Conversely, class diagrams require much higher semantic understanding and domain knowledge, with constraints such as association cardinality, association types, attribute representation, and alternative ways to express mandatory concepts, making the generation of such models much more complex, requiring additional skill and knowledge beyond language understanding and goal identification.
 
-The tendency to include more unnecessary elements is another point of interest: while the agent was able to represent most of the necessary requirements correctly, the tendency to add actors and use cases related to the textual description but not stated explicitly points out a risk of excessive hallucination that make LLMs unsuited for generating complete diagrams. The comparable performance in terms of correctness supports the use of LLMs for generating draft solutions (e.g., examples for classroom use) that can then be improved with human review to fine-tune details such as removing unneded elements or adding missing key concepts.
+The tendency to include more unnecessary elements is another point of interest: while the agent was able to represent most of the necessary requirements correctly, the tendency to add actors and use cases related to the textual description but not stated explicitly points out a risk of excessive hallucination that makes LLMs insufficient as autonomous generators of fully complete diagrams without human review. The comparable performance in terms of correctness supports the use of LLMs for generating draft solutions (e.g., examples for classroom use) that can then be improved with human review to fine-tune details such as removing unneeded elements or adding missing key concepts.
 
 \articleSummary{
 color1
 }{
 Summary of Study 2
 }{
-By comparing LLMs and human solvers on the generation of use case diagrams, what emerged was a comparable level of performance: the agent was not able to surpass a trained student with knowledge of the topic (excluding rare cases) and displayed a somewhat high tendency to hallucinate unnecessary elements. The fact that performance was comparable for all observed metrics, without a significantly worse semantic understanding of the modeling task, suggests that LLM architectures may be used to support the generation of use case diagrams, since the human effort required to ensure the produced artifacts achieve satisfactory quality may prove to be lower than what class diagrams may require. The use of a single-shot prompt hints at room for improvement with advanced prompting strategies, multi-agent architectures, or iterative refinement of the produced diagrams.
+By comparing LLMs and human solvers on the generation of use case diagrams, what emerged was a comparable level of performance: the agent was not able to surpass a trained student with knowledge of the topic (excluding rare cases) and displayed a somewhat high tendency to hallucinate unnecessary elements. The fact that performance was comparable for all observed metrics, without a significantly worse semantic understanding of the modeling task, suggests that LLM architectures may be used to support the generation of use case diagrams, since the human correction effort required to ensure the produced artifacts achieve satisfactory quality may prove to be lower than the one required to achieve satisfactory quality in LLM-generated class diagrams. The use of a single-shot prompt hints at room for improvement with advanced prompting strategies, multi-agent architectures, or iterative refinement of the produced diagrams.
 }
 
 \section{Study 3: Development of an assistant for the creation of modeling exercises solutions}
 
-The first two studies described in this chapter evaluated LLM capability to generate UML diagrams and identified potential effectiveness: the produced artifacts displayed a level of quality comparable to human-made diagrams, although certain issues emerged such as limited semantic understanding for class diagrams and a tendency to hallucinate superfluous elements for use case diagrams. The key finding for both study was that LLM-assisted diagram generation requires human intervention to enhance the diagrams in order to make them suitable for actual use. Furthermore, the empirical studies described in Chapters 4 and 5 pointed out a need to extend the process for defining reference solutions by identifying valid alternatives and synonyms; as a consequence, the development of an assistant that integrates LLM interaction with model creation was started at the beginning of 2025.
+The first two studies described in this chapter evaluated LLM capability to generate UML diagrams and identified potential effectiveness: the produced artifacts displayed a level of quality comparable to human-made diagrams, although certain issues emerged such as limited semantic understanding for class diagrams and a tendency to hallucinate superfluous elements for use case diagrams. The key finding for both studies was that LLM-assisted diagram generation requires human intervention to enhance the diagrams in order to make them suitable for actual use. Furthermore, the empirical studies described in Chapters 4 and 5 pointed out a need to extend the process for defining reference solutions by identifying valid alternatives and synonyms; as a consequence, the development of an assistant that integrates LLM interaction with model creation was started at the beginning of 2025.
 
 The purpose behind this assistant was to extend the features of the original UMLegend tool that allowed teachers to create reference solutions (a textual form for specifying required elements and a modeling canvas for drawing the intended diagram) so that these activities could first be performed by an LLM and then corrected with human intervention. The assistant, named \textit{TIGRE} (auTomated dIagram Generator of REference solution), was then tested with a proof-of concept validation focused on two modeling exercises taken from past Software Engineering exams.
 
@@ -617,7 +617,7 @@ The generated diagrams showed limitations related to correct attribute represent
 
 Certain issues also emerged in relation to association representation, since only 6 out of 14 associations in the first exercise had a matching name, but only one of these also had correct multiplicity values, and the second exercise exhibited an even worse performance, producing only 3 matching associations out of the expected six, but placing incorrect 1-1 multiplicity values on all relationships.
 
-The generated diagrams contained most of the key concepts expressed in the textual description, and thanks to the Apollon editor, little effort would be required to make them suitable as valid reference solutions; the time needed to produce the solutions was also improved, since the LLM agent produced its solutions in around a minute of work, greatly reduced the estimated time needed to draw a correct diagram by including the key concepts.
+The generated diagrams contained most of the key concepts expressed in the textual description, and thanks to the Apollon editor, little effort would be required to make them suitable as valid reference solutions; the time needed to produce the solutions was also improved, since the LLM agent produced its solutions in around a minute of work, greatly reducing the estimated time needed to draw a correct diagram by including the key concepts.
 
 \articleSummary{
 color1
@@ -643,7 +643,7 @@ The final study described in this chapter was conceptualized as part of a series
         Purpose & Comparison of prompt output \\
         Focus & Completeness and correctness \\
         Context & Generation of UML class diagrams \\
-        Stakeholders & Software modeling educators \\
+        Perspective & Software modeling educators \\
         \bottomrule
     \end{tabular}
     \label{tab:llm4mod4_gqm}
@@ -894,7 +894,7 @@ The results of the fixed effects linear model applied among all the pairs of mod
 \begin{table}[ht]
   \rowcolors{2}{gray!25}{white}
 \centering
-\caption{Results of the linear model applied between LLM pairs. Statistically significant p-values are in \textbf{bold}.}
+\caption{Results of the linear model applied between LLM pairs. Statistically significant p-values are in bold.}
 \label{tab:rq1_llm4mod4_lm}
 \small
 \begin{tabular}{lrrrrrr}
@@ -904,7 +904,7 @@ Model pair & \multicolumn{2}{c}{Syntax errors} & \multicolumn{2}{c}{Semantic err
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
 & Estimate & p-value & Estimate & p-value & Estimate & p-value \\
 \midrule
-ChatGPT vs DeepSeek & 0.133  & 0.675  & -1.33 & \textbf{0.086}  & -0.06\% & 0.462 \\
+ChatGPT vs DeepSeek & 0.133  & 0.675  & -1.33 & 0.086  & -0.06\% & 0.462 \\
 ChatGPT vs Gemini   & 3.932e-15 & 1.000 & -1.07 & 0.167  & 0.04\%  & 0.661 \\
 ChatGPT vs Qwen     & 3.20  & \textbf{3.15e-14} & -0.93 & 0.226  & -0.90\% & 0.278 \\
 DeepSeek vs Gemini  & -0.133 & 0.675 &  0.27  & 0.728  &  0.09\% & 0.462 \\
@@ -916,9 +916,9 @@ Gemini vs Qwen      & 3.20  & \textbf{3.15e-14} &  0.13  & 0.862  & -0.12\% & 0.
 
 The results of the statistical analysis point out to somewhat minimal differences between models, given that most of the comparisons did not yield statistically significant results. For what concerns syntax errors, statistically significant results happen whenever Qwen is involved, since the model performs far worse than the competition, and none of the resulting p-values when comparing the other three models are significant, reflecting their excellent performance observed with the descriptive assessment performed above. ${H_{0\_{syn}}}$ can be partially rejected: there is a significant difference in LLM agent performance related to syntax quality in the sense that Qwen is the worst performing on the metric, but the other three models can be considered equivalent.
 
-The only comparison that showed significant differences (and only slightly significant) for the count of semantic errors is the one between ChatGPT and DeepSeek, where the latter performed better: the interpretation is that the focus on code and reasoning may give DeepSeek an edge in tasks that require the ability to infer implicit domain constraints from natural language descriptions. Given that all other pairs do not show a statistically significant difference, the null hypothesis ${H_{0\_{sem}}}$ cannot be rejected: although certain models perform better than others, differences are not marked enough to make one stand out as clearly superior or worse.
+The only comparison that showed significant differences (and only slightly significant while being sub-threshold at 0.086 and not meeting the $\alpha = 0.05$ constraint) for the count of semantic errors is the one between ChatGPT and DeepSeek, where the latter performed better: the interpretation is that the focus on code and reasoning may give DeepSeek an edge in tasks that require the ability to infer implicit domain constraints from natural language descriptions. Given that all other pairs do not show a statistically significant difference, the null hypothesis ${H_{0\_{sem}}}$ cannot be rejected: although certain models perform better than others, differences are not marked enough to make one stand out as clearly superior or worse.
 
-Lastly, diagram completeness shows no statistically significant difference in any of the six comparisons: once more, the four models achieve a similar level of performance, but even the less capable Qwen is still able to achieve a satisfactory completeness level, on average, and thus cannot be considered worse than the other three agents. The best performing models are the proprietary ones, but their capabilities are in line with the performance shown by the open-source alternatives, with increases in performance that are not marked enough. ${H_{0\_{compl}}}$ is thus rejected as well.
+Lastly, diagram completeness shows no statistically significant difference in any of the six comparisons: once more, the four models achieve a similar level of performance, but even the less capable Qwen is still able to achieve a satisfactory completeness level, on average, and thus cannot be considered worse than the other three agents. The best performing models are the proprietary ones, but their capabilities are in line with the performance shown by the open-source alternatives, with increases in performance that are not marked enough. ${H_{0\_{compl}}}$ thus cannot be rejected: the choice of different LLM agents does not introduce a statistically significant impact on diagram completeness.
 
 \answer{RQ1 (Study 4)}{The four LLM agents analyzed all show different capabilities and limitations. Qwen encountered multiple issues related to syntax adherence, performing much worse than the other three models, who showed excellent capabilities and ability to follow class diagram rules and specifications. The code-oriented DeepSeek was the best performing model for semantic quality, making the least errors on average, highlighting its ability to derive domain-specific details from the requirements, while ChatGPT struggled the most in that regard. All four models showed similar diagram completeness scores, indicating an overall good ability to represent the key concepts in most exercises, with no clearly superior agent emerging, although the proprietary models showed to be more consistent in achieving high measures.}
 
@@ -936,7 +936,7 @@ To answer RQ2, the errors produced by the four models were grouped by category, 
     \begin{subfigure}{0.65\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter6/mod4_errors_sem.png}
-        \caption{Distribution of \textit{Semantic Errors} per in Study 4}
+        \caption{Distribution of \textit{Semantic Errors} per model in Study 4}
         \label{fig:llm4mod4_sem_count}
     \end{subfigure}
     \caption{Categories and counts of the syntax and semantic errors found in Study 4, grouped by model}
@@ -968,11 +968,11 @@ Other semantic error categories were far less common, and all four models had si
 
 \subsection{Key Findings}
 
-The results of the fourth study showed that, at the time of Summer 2025, LLMs had achieved superior capabilities related to class diagram generation compared to past works, since all four models showed comparable quality, while maintaining distinct strengths and weakness to distinguish them. The proprietary models performed the best in terms of completeness and adherence to syntactic rules, suggesting a high skill level for identifying key concepts from textual descriptions and representing them in class diagram format. However, they showed a relevant weakness in terms of semantic quality beyond simple structural correctness: correctly representations of the required concepts were not accompanied by correct details such as association typing or multiplicities.
+The results of the fourth study showed that, at the time of Summer 2025, LLMs had achieved superior capabilities related to class diagram generation compared to past works, since all four models showed comparable quality, while maintaining distinct strengths and weaknesses to distinguish them. The proprietary models performed the best in terms of completeness and adherence to syntactic rules, suggesting a high skill level for identifying key concepts from textual descriptions and representing them in class diagram format. However, they showed a relevant weakness in terms of semantic quality beyond simple structural correctness: correct representations of the required concepts were not accompanied by correct details such as association typing or multiplicities.
 
 DeepSeek showed the best results for what concerns semantic errors, with both the lowest average and the lowest maximum count, suggesting that its optimization focused on code and reasoning, rather than being a more general-purpose model, made it more effective at identifying details implicitly hidden in natural language requirements. However, a lower completeness rate on average indicates that better semantic precision does not necessarily come with better coverage of elements: the model may miss certain elements, but is more consistent in representing the ones it can identify. The key finding is that, depending on the reasons for which automatic model generation is required, certain models may be preferable: proprietary models such as Gemini and ChatGPT are better for drafts that cover most of the necessary elements, despite having a higher tendency to misrepresent associations, and DeepSeek may be better for smaller diagrams where the focus is more on correct structural logic.
 
-Lastly, Qwen stands out as the overall worse model of the four selected for the comparison, due to the prevalence of syntactic errors in attribute representation, structural misconceptions that suggest a less mature training for UML knowledge compared to the other three models, together with a tendency to ignore prompt specifications, given that attribute constraints were explicitly mentioned as a key requirement to guide the diagram creation process. The semantic capabilities of the model were on par with the other ones, however, meaning that its domain interpretation capabilities are not inherently worse, but the inability to represent its reasoning capabilities in a syntactically correct way is a significant limitation for its use in educational contexts.
+Lastly, Qwen stands out as the overall worst model of the four selected for the comparison, due to the prevalence of syntactic errors in attribute representation, structural misconceptions that suggest a less mature training for UML knowledge compared to the other three models, together with a tendency to ignore prompt specifications, given that attribute constraints were explicitly mentioned as a key requirement to guide the diagram creation process. The semantic capabilities of the model were on par with the other ones, however, meaning that its domain interpretation capabilities are not inherently worse, but the inability to represent its reasoning capabilities in a syntactically correct way is a significant limitation for its use in educational contexts.
 
 The results of the fourth study reinforce the findings of the other three studies described in this chapter: LLMs are able to produce diagrams that are mostly correct, and exhibit a relatively high knowledge of UML modeling rules, making them suitable for creating drafts and templates, with different models being better suited for different goals. The limited capabilities for what concerns association representation indicate a general weakness of general-purpose LLMs, given that association-defining requirements are rarely expressed in natural language description and should rather be inferred from domain knowledge and context, pointing out to the need of specific LLM agents trained on identifying such requirements.
 
