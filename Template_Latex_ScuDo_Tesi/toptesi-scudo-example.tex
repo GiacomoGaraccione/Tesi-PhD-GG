@@ -97,9 +97,6 @@
 	\end{center}%
 }
 
-
-
-
 \definecolor{bluish}{rgb}{0.0, 0.0, 0.90}
 \newcommand{\RB}[1]{\textcolor{blue}{\textsf{#1}}}
 \colorlet{color1}{black!15!white}
@@ -212,28 +209,22 @@ Chapter8/chapter8%
 
 \SupervisorNumber{2}
 \SupervisorList{%
-    Prof.~Luca Ardito, Supervisor\\
-    Prof.~Riccardo Coppola, Co-supervisor}
-% Name of the examining committee: optional. 
-% Default value "Doctoral Examination Committee"
-%\Nexaminationcommittee{Doctoral examination committee}
-% List of the  examining committee members: mandatory if the above label
-% is not empty.
-%\ExaminerList{%
-%Prof.~A.B., Referee, University of \dots\\
-%Prof.~C.D., Referee, University of \dots\\
-%Prof.~E.F., University of \dots\\
-%Prof.~G.H., University of \dots\\
-%Prof.~I.J., University of \dots}
-% Name of the institution where the examination takes place; optional.
-% Default value: "Politecnico di Torino"
-%\Nlocation{Politecnico di Torino}
-% Examination date: mandatory, although the way to write it is free.
-\ExaminationDate{February 29, 2123}
-% Disclaimer with signature; optional. Default text as
-% in the following lines. 
+    Professor Luca Ardito, Supervisor\\
+    Professor Riccardo Coppola, Co-supervisor
+}
+\Nexaminationcommittee{Doctoral examination committee}
+\ExaminerList{%
+Professor Porfirio Tramontana, \textit{Referee}, Università di Napoli "Federico II"\\
+Professor Beatriz Marin, \textit{Referee}, Universitat Politecnica de València\\
+Professor Claudio Di Sipio, Johannes Kepler University, Linz\\
+Professor Alexander Dekhtyar, California Polytechnic State University
+}
+
+\Nlocation{Politecnico di Torino}
+\ExaminationDate{To be defined}
+
 \Disclaimer{%
-\noindent I hereby declare that, the contents and organisation of this dissertation constitute my own original work and does not compromise in any way the rights of third parties, including those relating to the security of personal data.	
+\noindent I hereby declare that, the contents and organization of this dissertation constitute my own original work and does not compromise in any way the rights of third parties, including those relating to the security of personal data.	
 }
 %\Signature{%
 %\begin{flushright}
@@ -244,42 +235,35 @@ Chapter8/chapter8%
 %}
 %\end{flushright}}
 \end{ThesisTitlePage}
-%%%%%%%%%%%%%%%% Everything else necessary in the thesis title
-%%%%%%%%%%%%%%%% page and in the copyright page is supplied by
-%%%%%%%%%%%%%%%% the default values.
-%%%%%%%%%%%%%%%% If you enter an explicit disclaimer, you can
-%%%%%%%%%%%%%%%% typeset other material before the disclaimer
-%%%%%%%%%%%%%%%% formula; use the necessary spacing on order
-%%%%%%%%%%%%%%%% to separate the formula from other text. 
-%%%%%%%%%%%%%%%% 
-%%%%%%%%%%%%%%%% For example you might want to write the formula
-%%%%%%%%%%%%%%%% for a particular licence, provided the licence 
-%%%%%%%%%%%%%%%% allows Open access; not necessarily all uses
-%%%%%%%%%%%%%%%% of the thesis should be allowed, but the minimum
-%%%%%%%%%%%%%%%% is the reading access.
-
-%%%%%%%%%%%%%%%% The next two lines are metadata for a normal PDF file.
-%%%%%%%%%%%%%%%% For ISO archivable PDF/A-1b metadata, they must
-%%%%%%%%%%%%%%%% be entered only in the form used in the file
-%%%%%%%%%%%%%%%% named in the filecontents* environment as shown
-%%%%%%%%%%%%%%%% at the beginning of this file.
 
 %\subject{How to typeset a doctoral thesis suitable for defence in almost any country and university.}
 %\keywords{{pdfLaTeX} {LuaLaTeX} {XeLaTeX} {PhD doctoral programs} {PhD dissertation} {Politecnico di Torino}} 
 
-\summary%\sommario
+\summary
 
-This is where you write your abstract \dots\ (Maximum 4000 characters, i.e. maximum two pages in normal sized font, typeset with the thesis layout).
+Software modeling notations such as the Unified Modeling Language and the Business Process Model and Notation occupy a key role in software engineering education; this importance is however not reflected in professional practice, where such notations are underused, and students perceive learning them as a daunting and frustrating task. The reasons behind this gap include the cognitive effort needed to correctly map informal requirements to formal graphical representation, and the necessity of immediate, personalized, and performative feedback to foster development; necessity that is however hard to cover in large-scale university courses. 
 
-The abstract environment is also available, but  \texttt{\string\summary} is preferred because it generates an un-numbered chapter. The abstract environment is more suitable for articles and two column typesetting without a separate title page.
+This PhD thesis investigates whether two technology approaches can be applied to modeling education to address these limitations. The first approach is the use of gamification, the act of integrating game design elements in non-recreational contexts, to guide the development of modeling tools that integrate automated diagram assessment with motivational mechanics, while the second technology is the use of large language models as intelligent agents that can generate modeling artifacts, to support the evaluation systems of gamified tools and provide educational assistance.
+
+The gamification aspects of the research are grounded in four empirical studies performed with two tools developed throughout the first years of the PhD. One of them, named BIPMIN, focused on gamifying BPMN modeling, was first assessed with a preliminary usability evaluation and then used in a controlled experiment with students of a Masters level course. The findings from the experiment led to the definition of a generalized gamification framework that then guided the development of UMLegend, a tool that supports UML class diagram assignments that was then evaluated with a second controlled experiment, following the same design as the first one. The BIPMIN tool was then redesigned according to the framework and adopted for a longitudinal study through the 2023-2024 edition of an Information Systems course, tracking the impact of the game mechanics on modeling performance over five progressive exercises and through grade comparison with the preceding non-gamified cohort.
+
+The most consistent finding across all four studies is the positive effect of mechanics that provide direct element-level guidance such as completeness indicators, in-diagram feedback that changes the style of correct/wrong elements, and detailed error lists, with these elements improving diagram correctness, being more appreciated by students, and making students more willing to interact with the evaluation loop, regardless of notation or duration of the interaction. Furthermore, the longitudinal study proved that gamification leads to significant improvements in the final course evaluations, while also bringing a progressive reduction of errors through the course, demonstrating that gamified modeling education can bring benefits even over longer learning periods. However, long-term engagement mechanics proved to be less appreciated in the longitudinal setting as well as in the single-session experiments, hinting that such mechanics may require additional social implementations to provide motivational effects.
+
+The research activities focused on LLMs instead covered three empirical studies and the development of a prototype tool between 2023 and 2025. Two comparative studies evaluated the GPT-4 architecture against a trained human solver on, respectively, UML class diagram and use case diagram exercises; then, an LLM-assisted tool named TIGRE was developed, intended to build on the findings of the two comparative studies and to provide teacher support in the definition of reference solutions for UML class diagram exercises, with the end goal of combining it with the aforementioned UMLegend. Lastly, a final comparative study continued the research thread on class diagram generation by testing the performance of four LLM agents, with a mix of proprietary and open source models and adopting a role-based few-shot prompting strategy.
+
+Findings across the three studies on LLM-assisted modeling tasks show that general-purpose models can be compared to students in terms of syntactic quality, while performing significantly worse in terms of representing semantic, domain-dependent requirements on class diagrams, while performance proved to be more comparable on the structurally simpler use case notation. The use of advanced prompting techniques can remove syntax errors entirely for most models, while keeping the semantic weakness, an issue that is encountered in all four architectures. Lastly, the prototype assistant demonstrates that LLM-generated diagrams can be used as structural starting templates and reduce the effort needed to create reference solutions, while at the same time needing teacher intervention to address the inevitable semantic violations.
+
+The thesis's contribution to the research literature on software modeling and model-based engineering consists of two developed and evaluated software artifacts (UMLegend, BIPMIN) focused on gamified modeling education, the TIGRE prototype for LLM-assisted diagram creation (still currently under development at the time of writing), a three-step automated evaluation pipeline that ties syntactic, semantic, and pragmatic assessment to gamified feedback, and a multi-notation multi-model empirical benchmark for LLM-generated diagrams. Together, the findings establish that gamification can reliably improve modeling education if it ties game mechanics to high-quality automated formative feedback, and that LLMs are effective drafting helpers for both diagram generation and exercise creation tasks, with semantic domain inference being a shared limitation for both research areas.
 
 \emptypage %  it works even without the classica option
-\acknowledgements% or \ringraziamenti
+\acknowledgements
 
-And I would like to acknowledge \dots
+%And I would like to acknowledge \dots
 
-Acknowledgements are mandatory when people outside the academic institution supported the development of the research that was performed in order to reach the conclusion of the doctorate program.
+%Acknowledgements are mandatory when people outside the academic institution supported the development of the research that was performed in order to reach the conclusion of the doctorate program.
 
+\begin{comment}
+    
 \begin{dedication}
 
 \textit{I would like to dedicate this thesis to my loving parents} 
@@ -290,7 +274,7 @@ The dedication very seldom is a proper thing to do; in some countries it is very
 The sentence used above clearly is an example of something very common, but it is  useless. Of course we all love our beloved parents, but it is not necessary to ``engrave it in stone''.
 \par}
 \end{dedication}
-%\end{dedica}
+\end{comment}
 
 
 \tablespagetrue\figurespagetrue 
@@ -306,18 +290,8 @@ The sentence used above clearly is an example of something very common, but it i
 \include{Chapter6/chapter6}
 \include{Chapter8/chapter8}
 
+\backmatter
 
-
-%\appendix
-%\include{Appendix1/appendix1}
-
-\backmatter% here begins the back matter
-% ... otherwise a single appendix may stay here
-% \include{Appendix0/appendix0}
-
-% Do not use this command if you did not prepare a nomenclature
-% database by means od the suitable \nomenclature command and its
-% arguments, as we did in chapter 2 of this example thesis.
 \printnomencl
 
 % In this example we use \nocite{*} in order to typeset the whole
@@ -327,9 +301,6 @@ The sentence used above clearly is an example of something very common, but it i
 \nocite{*}
 
 \printbibliography[heading=bibintoc]
-
-% Do not use this command if you did not set the \makeindex switch
-% in the preamble.
 
 \printindex
 
