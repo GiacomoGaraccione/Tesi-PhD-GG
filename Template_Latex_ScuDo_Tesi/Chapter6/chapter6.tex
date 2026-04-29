@@ -799,16 +799,17 @@ To answer RQ1, a fixed effect linear model was applied to the three metrics obta
     \item \textbf{${H_{0\_{compl}}}$:} The choice of LLM agent has no statistically significant impact on the diagram completeness of the generated UML class diagrams.
 \end{itemize}
 
-To answer RQ2, errors were grouped by category and then a count of the different error categories made by each model was computed, in order to evaluate the distribution of errors across the four agents. The analysis associated with RQ2 was performed from a qualitative and descriptive point of view, and no null hypothesis was formulated.
+To account for 18 simultaneous pairwise comparisons (6 model pairs x 3 metrics), a Bonferroni-adjusted significant threshold of $\alpha_C = 0.05/18 = 0.00278$ was applied.
 
+To answer RQ2, errors were grouped by category and then a count of the different error categories made by each model was computed, in order to evaluate the distribution of errors across the four agents. The analysis associated with RQ2 was performed from a qualitative and descriptive point of view, and no null hypothesis was formulated.
+c
 \subsection{Results}
 
 Table \ref{tab:rq1_llm4mod4} summarizes the statistics measured for the three metrics used to answer RQ1 (count of syntax errors, count of semantic errors, diagram completeness) across the four models used for the study; the distribution of all three metrics per each model can be seen in Figure \ref{fig:llm4mod4_rq1}.
 
 \begin{table}[ht]
 \centering
-\caption{Summary statistics for Study~4 (min, max, mean $\pm$ SD per model
-and metric over 15 exercises each).}
+\caption{Summary statistics for syntax errors, semantic errors, and diagram completeness in Study 4.}
 \label{tab:rq1_llm4mod4}
 \small
 \setlength{\tabcolsep}{4pt}
