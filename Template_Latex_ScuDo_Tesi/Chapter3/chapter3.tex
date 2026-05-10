@@ -222,7 +222,7 @@ The preliminary trial was set up as a session where participants would have to c
 
 The trial was performed in person at Politecnico di Torino for 10 participants, who used a version of the prototype running locally on a laptop and answered to paper copies of the questionnaire; the two remaining participants could only take part in the study remotely, and thus used remote desktop control to access the local prototype.
 
-Participants were selected via convenience sampling among students of the Masters' degree in Computer Engineering at Politecnico di Torino as representative of students that would learn BPMN during their study career; due to the trial being a preliminary study, a small number of participants was selected, with a total of 12 volunteering students being involved. Participation in the study was rewarded with tangible prizes such as free snacks offered by the thesis student who was overseeing the development of the prototype, Ms. Kylie Bedwell. 
+Participants were selected via convenience sampling among students of the Masters' degree in Computer Engineering at Politecnico di Torino as representative of students that would learn BPMN during their study career; due to the trial being a preliminary study, a small number of participants was selected, with a total of 12 volunteering students being involved. Participation in the study was rewarded with tangible prizes such as free snacks offered by the thesis student who was overseeing the development of the prototype. 
 
 Since the trial consisted of comparing three different implementations of the BIPMIN prototype, the study design needed to ensure that participants could try all three versions to conduct fair judgment; it was thus not possible to adopt a between-subjects technique where each participant would try only one of the three versions of the prototype and there would be no way to compare the differences in game mechanics. For this purpose, a within-subjects design (see Section \ref{sec:empirical_methods}) was selected, so that participants could experience all three versions of the prototype for direct comparison; the design is also more suited for experiments with a small sample of participants, making it the better choice for the pilot study. To mitigate ordering biases, tasks were counter-balanced with the use of a balanced Latin square to ensure participants did not test the prototype with the same configuration; this resulted in a total of 6 different variations of how tasks T3, T4, and T5 were ordered, each assigned to two of the participants, as shown in Table \ref{tab:latinsquare}.
 
@@ -511,7 +511,7 @@ A similar reasoning applies to how the mechanics were grouped in three different
 
 Finally, the implementation of the evaluation engine could also qualify as a potential threat, since it only assesses the syntactic quality of a diagram and limits the semantic aspect to checking whether specific elements are present or not, without any check on their order or actual textual content. The fact that not all aspects of BPMN modeling rules are covered by the evaluation engine could affect the impact of BIPMIN on student performance.
 
-\textbf{Threats to conclusion validity:} rhe main concern on this aspect is the fact that this study was a preliminary evaluation focused mainly on the usability of the prototype and on the perception of the game mechanics. The results and the conclusions gathered after the study may not hold after a future empirical evaluation of BIPMIN more focused on the educational aspect of gamification impacting BPMN modeling education.
+\textbf{Threats to conclusion validity:} the main concern on this aspect is the fact that this study was a preliminary evaluation focused mainly on the usability of the prototype and on the perception of the game mechanics. The results and the conclusions gathered after the study may not hold after a future empirical evaluation of BIPMIN more focused on the educational aspect of gamification impacting BPMN modeling education.
 
 Additionally, the time constraints in the study, as well as the design of the study as a single session, could possibly affect the evaluation of both the \textit{Progress} and \textit{Competition} versions: for the former, the study being composed by multiple small tasks means that it is not easy to evaluate progression fully, and multiple tasks supplied over time may be more effective. A similar reason applies for the second version, since single and independent sessions are not suitable to evaluate leveling mechanisms and leaderboards, that conventionally better appreciated over longer time periods.
 
@@ -631,13 +631,13 @@ After selecting these four mechanics for the implementation of the new version, 
     Moreover, each process part has an associated color, which is used when presenting the parts that have been modeled correctly in the modal window; the main purpose of the color, however, is to change the background of the elements that have been considered matching for the process parts in the same way, highlighting which parts of the student's diagram are considered correct and which ones are not. An example of what the feedback mechanism looks like in practice is shown below, with Figure \ref{fig:clean_diagram} showing a BPMN diagram before an automated evaluation, and Figure \ref{fig:feedback_diagram} showing the same diagram after the automated evaluation, with the colored elements signifying that the upper pool is correctly representing part of the requirements, while the lower one needs to be improved.
     \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.48\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter3/clean_diagram.png}
         \caption{BPMN diagram not yet submitted to an automated evaluation}
         \label{fig:clean_diagram}
     \end{subfigure}\hfill
-    \begin{subfigure}{0.48\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter3/feedback_diagram.png}
         \caption{BPMN diagram with changes applied after an automated evaluation and coloring for elements that satisfy conditions for certain process parts}
@@ -682,9 +682,8 @@ After settling on the experiment design and how to administer the treatment, the
 \begin{table}[H]
 \centering
 \footnotesize
-\caption{Experiment Design}
+\caption{Experiment Design for the first BIPMIN empirical study}
 \label{tab:exp_design_3}
-\resizebox{\textwidth}{!}{%
 \begin{tabular}{l c c c c}
 \toprule
 & \multicolumn{2}{c}{Task 1} & \multicolumn{2}{c}{Task 2} \\
@@ -695,8 +694,7 @@ Group 2 & Exercise 1 & Gamified & Exercise 2 & Vanilla \\
 Group 3 & Exercise 2 & Vanilla & Exercise 1 & Gamified \\
 Group 4 & Exercise 2 & Gamified & Exercise 1 & Vanilla \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 The two exercises were selected among the exercises defined by the course's supervisors for the exam calls in years before 2023, and consist of the description of real-life scenarios where an Information System is used to facilitate a process involving multiple actors and activities. The exercises were judged by the supervisors to be of average difficulty, and thus suitable for students to solve during the experiment. The experiment was performed at the end of the course, a few weeks before the final exam, and it was assumed that students had the necessary knowledge and preparation to solve the two exercises in a reasonable amount of time: a time constraint was then enforced during the experiment, as participants were imposed a time limit of 45 minutes for each of the two exercises they had to solve.
@@ -889,13 +887,13 @@ To answer RQ2, completeness scores have been computed for each saved student dia
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.6\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter3/exp_syn_violin.png}
         \caption{Box and violin plot for the \textit{Syntactic correctness} metric}
         \label{fig:boxplotsyn}
     \end{subfigure}\hfill
-    \begin{subfigure}{0.6\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter3/exp_sem_violin.png}
         \caption{Box and violin plot for the \textit{Semantic correctness} metric}
@@ -972,13 +970,13 @@ Out of the 199 answers given to the open question related to the issues encounte
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.6\linewidth}
+    \begin{subfigure}{0.9\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter3/exp_issues.png}
         \caption{Topics found in the issues reported by the students}
         \label{fig:issues_count}
     \end{subfigure}\hfill
-    \begin{subfigure}{0.6\linewidth}
+    \begin{subfigure}{0.9\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter3/exp_comments.png}
         \caption{Topics found in the suggestions left by the students}

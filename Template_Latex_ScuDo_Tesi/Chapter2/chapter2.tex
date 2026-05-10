@@ -12,11 +12,11 @@ Among the various types of diagrams covered by UML, class diagrams are one of th
 
 This is achieved with the use of \textit{Classes}, rectangle-shaped elements used to represent sets of objects with common properties and relationships, with each specific instance of a class being called an \textit{Object}; properties are called \textit{Attributes} and are characterized by a unique (for the class) name and a type, with each object having a specific value for each defined attribute; the final element expresses relationships between classes through \textit{Associations}, lines that connect two classes and specify a value named \textit{Multiplicity} for both classes: this number states the minimum and maximum number of objects that can be connected in a relationship.
 
-Beyond class diagrams, other key notations defined by UML support the different phases of software development. One of these notations is the concept of use case diagrams, a notation used in requirement engineering processes to capture the functional capabilities of a system from the perspective of the external environment, that is, its intended users and other systems that interact with it. A use case diagram identifies the \textit{actors}, external entities that interact with a given system, the \textit{use cases}, discrete functional units that implement the system's capabilities, and three type of relationships: \textit{associations} that connect actors to the use cases they participate in, either as the executing actor or as a supporter, \textit{inclusion} relationship where one use case unconditionally invokes another as part of its execution flow, and \textit{extension} relationships that identify scenarios where one use case may continue the functionalities of another when certain conditions are verified \cite{fowler2003uml}. The notation's intended use is communication between technical and non-technical stakeholders during the early phases of requirements definition, making it more abstract and purposely less detailed in terms of variability compared to class diagrams, which serve multiple purposes in MDE activities.
+Beyond class diagrams, other key notations defined by UML support the different phases of software development. One of these notations is the concept of use case diagrams, a notation used in requirement engineering processes to capture the functional capabilities of a system from the perspective of the external environment, that is, its intended users and other systems that interact with it. A use case diagram identifies the \textit{actors}, external entities that interact with a given system, the \textit{use cases}, discrete functional units that implement the system's capabilities, and three type of relationships: \textit{associations} that connect actors to the use cases they participate in, either as the executing actor or as a supporter, \textit{inclusion} relationships where one use case unconditionally invokes another as part of its execution flow, and \textit{extension} relationships that identify scenarios where one use case may continue the functionalities of another when certain conditions are verified \cite{fowler2003uml}. The notation's intended use is communication between technical and non-technical stakeholders during the early phases of requirements definition, making it more abstract and purposely less detailed in terms of variability compared to class diagrams, which serve multiple purposes in MDE activities.
 
 Despite being the most commonly used notation for object-oriented design and documentation, UML tends to be underused in both industrial context and academic education, with several studies documenting causes for this gap. A survey asking practitioners and students for perceived difficulties identified limitations such as notation complexity, the necessity of putting effort to keep consistency between diagrams and code, and absence of adequate tools for supporting interactive learning \cite{siau2006identifying}; another investigation on university programming courses conceptualized the issues for UML class diagrams, finding systematic misunderstandings related to object identity, inheritance understanding, and difficulties in representing association semantics that persisted after the learning phase \cite{boustedt2012students}. An observation focused more on the practitioner side found that, during agile development processes, there is a tendency to substitute formal UML representations with informal whiteboards and other, less detailed notations, due to a preference for speed and flexibility against completeness and precision \cite{stettina2012documentation}; in addition to the aforementioned limitations, practitioners and instructors also report barriers such as excessive tool complexity and an inability to perceive enough return on investment to justify adopting UML instead of less formal approaches \cite{oliveirajr2025uml}. The same survey also pointed out misalignment between which diagram types are prominent in educational syllabi, pointing out the need for educational approaches contextualized in real industrial practices. 
 
-This low usage of the UML notation has relevant implications on educational aspects: Bogdanova \cite{bogdanova2019towards} showed that a substantial amount of practice is necessary to reach a basic level of proficiency in conceptual modeling, and identified recurring error patterns among learners over the years; the conclusion behind the study is that sustained and personalized feedback is necessary to help students reach a sufficient level of competence: however, providing such assistance is a complex endeavor in large-scale university courses. A review of tools by Huber and Hagel \cite{huber2022tool} for assisting UML education identified automated and interactive approaches as potentially one of the most effective strategies for improving the learning process, while also pointing out the importance of the quality and immediacy of the feedback on making educational tools actually effective. As a consequence, the definition of feedback mechanisms tailored to students that do not require teacher intervention and can rather substitute human assessment, was identified as one of the guiding motivations behind the research activities undertaken throughout the PhD.
+The low usage of the UML notation has relevant implications on educational aspects: Bogdanova \cite{bogdanova2019towards} showed that a substantial amount of practice is necessary to reach a basic level of proficiency in conceptual modeling, and identified recurring error patterns among learners over the years; the conclusion behind the study is that sustained and personalized feedback is necessary to help students reach a sufficient level of competence: however, providing such assistance is a complex endeavor in large-scale university courses. A review of tools by Huber and Hagel \cite{huber2022tool} for assisting UML education identified automated and interactive approaches as potentially one of the most effective strategies for improving the learning process, while also pointing out the importance of the quality and immediacy of the feedback on making educational tools actually effective. As a consequence, the definition of feedback mechanisms tailored to students that do not require teacher intervention and can rather substitute human assessment, was identified as one of the guiding motivations behind the research activities undertaken throughout the PhD.
 
 
 \subsubsection{Automated Evaluation of UML Class Diagrams}
@@ -36,7 +36,7 @@ UMLGrade \cite{farias2020whats} is presented as a six-step pipeline where a teac
 
 A practical example of how UMLGrade can be used in practice has been described by Modi et al. \cite{modi2021tool}, who extended it to also cover additional UML notations such as use case, activity, sequence, and state machine diagrams. The tool has been implemented as a desktop architecture where a teacher can upload a zip archive with the student diagrams and the source code of their solution, and different components are used to identify the type of diagram, compare it with the corresponding reference, and generate a feedback report for the students, showing the list of correct elements and missing ones with the overall score, and one for the teacher with the recap of assigned grades. The matching approach, however, does not allow flexibility and expects explicit name equivalence, meaning that semantically equivalent representations are considered wrong; there are no examples of actual tool use with students, and no comparison with human evaluators, meaning that its strengths and potential benefits are only assumed. 
 
-Bian et al. \cite{bian2019automated} identified the problem of variants and alternative representations for UML class diagram assignments, and proposed a metamodel and a three-step grading algorithm to automate diagram evaluation. The first step takes every class in a teacher-defined reference diagram and looks for the closest class in the student's diagram, considering syntax similarity, semantic similarity (WordNet database \cite{miller1995wordnet} and semantic relationships among names), and structural similarity (similarity of attributes and methods) to identify the best match; following steps match attributes and methods in matched classes using the same approach, then match associations between matched classes. A preliminary study performed with a tool implementing this approach yielded promising results (a grade distribution within 14\% of the human-assigned grades), although no examples of further use exist in the literature.
+Bian et al. \cite{bian2019automated} identified the problem of variants and alternative representations for UML class diagram assignments, and proposed a metamodel and a three-step grading algorithm to automate diagram evaluation. The first step takes every class in a teacher-defined reference diagram and looks for the closest class in the student's diagram, considering syntax similarity, semantic similarity using techniques such as the WordNet database \cite{miller1995wordnet} or the identification of semantic relationships among names, and structural similarity (similarity of attributes and methods) to identify the best match; following steps match attributes and methods in matched classes using the same approach, then match associations between matched classes. A preliminary study performed with a tool implementing this approach yielded promising results (a grade distribution within 14\% of the human-assigned grades), although no examples of further use exist in the literature.
 
 Lastly, Wodel-EDU \cite{gomezabajo2017dsl} implements a different approach: rather than automatically evaluating student-produced diagrams compared to a reference, it produces variants, or \textit{mutants}, of said reference and asks students to identify the correct model. This is achieved through the domain specific language (DSL) Wodel \cite{gomezabajo2016wodel}, which can be applied to any type of modeling language according to a changeable metamodel and allows for multiple operations such as creating, editing, or deleting objects with multiple selection criteria and support for computing static and dynamic element coverage. 
 
@@ -164,150 +164,6 @@ Penalties, health/life systems, expiring rewards, failure states \\
 
 
 
-\begin{comment}
-    
-
-Gamification learns from the experiences and research developments of the game industry, identifying and extracting those features of games which motivate players and make the experience enjoyable and applying them to different industries and environments \cite{Pedriera}. The game industry, over the years, has refined techniques for optimising human motivation and engagement \cite{Octalysis}, resulting in a set of game elements tailored to human motivation. For example:
-\begin{itemize}
-    \item the need for competence has been addressed by providing the player with opportunities to earn points, awards and badges and compare their competence with other players through leaderboards \cite{Sailer};
-    \item the need for autonomy has been addressed by providing players with a choice of avatars, diverging story paths, and choice of ways to play \cite{Wee};
-    \item the need for connection has been addressed with meaningful storylines centred around the player, cooperative gameplay (with real or simulated players) \cite{Sailer}, and through game-related discussion forums \cite{Wee}.
-\end{itemize} 
-These game elements over the last decade have been applied to non-game contexts with increasing frequency. 
- The idea that gamification could be used to improve the motivation of users was widely accepted \cite{Sailer}. However, conclusive evidence to support this hypothesis was lacking \cite{Sailer2, Pedriera}. 
-There are many examples of frameworks for gamified systems: the framework named Octalysis, theorized by Chou \cite{chou2015actionable}, was chosen as the basis for defining the gamified elements used in this study.
-
-
-
-%Game elements are those components of games which have been created to meet the motivational needs of players. 
-There is no strict definition of what constitutes a game element compared to merely an element of digital applications, nor a strict boundary between what constitutes a game principle compared to a game element  \cite{Deterding, Sailer}. For this study, game elements are considered to be those components of games which can be extracted and applied to applications in non-game contexts and which are noticeably present in mainstream games, such as the existence of a point system or a reward scheme.
-
-%Some of the most commonly used game elements include:
-Many studies have characterised the game elements in different ways, with
-various different lists and descriptions of the elements \cite{Pedriera, Basten, Sailer, Antonaci}. An analysis of these studies reveals that a large amount of game elements can prove to be effective and beneficial.
-The game elements presented below are a subset of the elements commonly seen in many studies on gamification and its effectiveness: they can be grouped under the categories identified by Olgun et al. \cite{Olgun} and are generally believed to be the most effective at increasing motivation and interest of users of gamified systems, and were thus the ones considered for this study.
-
-\textbf{Points} are a basic element of many games. They are, in essence, a numerical counter that grows as players complete tasks. Points can come in many formats, e.g. experience points (XP), skill points, or reputation, and serve as an indicator of player progress through the game  \cite{Sailer}.
-
-\textbf{Badges, achievements and medals} are different terms for a similar concept: a reward for achieving a specific goal. They are a visible indicator of the players' accomplishments, commonly represented with a specific picture or icon relevant to the accomplished task. Badges are usually optional but encourage players to perform additional tasks or experiment with different ways of interacting with the system  \cite{Basten, Sailer}. Badges can also be a form of social motivation by creating the essence of belonging to an exclusive club, especially if the badges are challenging to earn  \cite{Sailer}.
-
-\textbf{Prizes} are items that users receive for achieving a task or goal. These items can be tangible, such as extra marks for a graded course for the student at the top of the leaderboard, or intangible, such as in-game items or currency. In this study, Gamification was assessed as a tool for inciting user motivational behaviours. Therefore, only intangible prizes were considered (tangible prizes are considered as a separate motivational tool for gamification). 
-
-\textbf{Progress bars} are one method of displaying user progress through a gamified system. Similar to those seen when loading a web page, progress bars usually take the shape of horizontal rectangles filled to a certain point to indicate how much of a task a user has completed. 
-
-\textbf{Levels} are attached to the user's profile or avatar and are a method of indicating the user's experience with using a system. Commonly, there are a fixed number of levels available, which could be either numbered sequentially or labelled according to experience, for example, from novice to master. As the user completes tasks, their experience improves, which is indicated by a transition to the next level. Levels are generally tied to experience points (XP), but any counter can be used to indicate progress to the next level. 
-
-\textbf{Challenges} are complex tasks that require persistence, dedication and the display of skill to overcome. %Challenges are a key element of gaming, allowing players to test their skills and prove their competence in the gameplay.
-In gamification, challenges can be used as a method for testing participants' skills, providing them with an arena for proving their competence in a given activity. Essentially, challenges in gamified applications consist of completing a larger task than would be required during regular use of the application. %\RC{secondo me il discorso sui boss fights non serve e la descrizione è in generale troppo lunga e un po' fuori focus. scriverei semplicemente che le challenges sono delle sfide aggiuntive rispetto ai task normali}
-
-\textbf{Leaderboards} compare the performance of users against others. They are generally shown as a rankings table, using performance metrics (such as points or badges earned) to sort users from highest to lowest rank. Leaderboards leverage the competitive nature of humans, displaying users' performance compared to their peers to motivate them to improve their status \cite{Sailer}.
-
-\textbf{Competition and Cooperation} involves users working directly either against one another or with each other to achieve a shared task. Separately from leaderboards, the Competition game element refers to direct competition with a peer in a one-versus-one or group-versus-group scenario. Cooperation refers to users working with others to achieve a common goal. Cooperation can either happen within members of an explicitly defined team, or as part of a fluid collective.
-
-\textbf{Quests} are tasks to be completed by the user. They are similar to the challenges game element mentioned previously. However, quests expand on these by providing a narrative aspect to the challenge. These narrative aspects provide a fictional reason for users to complete the tasks. They can be either independent stories or part of the overarching narrative for a gamified system. 
-
-\textbf{Avatars} are visual representations of users displayed within a gamified system  \cite{Sailer}. They can either be selected by the user from a set list of avatar choices or created and designed by the user. Avatars allow users to express their personality and character separate from their physical appearance. In this way, they can provide a means of social interaction with a potentially different experience compared to the real world.
-
-\textbf{Easter Eggs} are hidden surprises that can be discovered by users of a system. They are generally camouflaged and require users to search deeply within a system to uncover them. Easter eggs are used to encourage exploration and reward dedicated users.
-
-\textbf{Aesthetics} are related to the look and feel of a user interface. This includes, but is not limited to, the colour scheme, layout of components, font choices and animations. The aesthetics of a user interface are of major importance when it comes to the effective use of gamification concepts  \cite{Sailer}.
-
-\textbf{Feedback} covers a broad design aspect which is particularly important when used in an educational environment. Feedback in a gamified computer application includes interactive tutorials, error warnings, correction suggestions and notifications for the correct completion of tasks. These types of immediate feedback, which can be provided by a computer application to many students at once, as opposed to students waiting their turn for individual feedback from a teacher, can enable an accelerated learning environment.
-
-\end{comment}
-\begin{comment}
-    
-
-Purpose of the section
-
-This section introduces gamification as a design paradigm, clarifies its theoretical foundations, and positions it as a tool to address motivational and engagement issues in software engineering activities.
-
-You are doing three things at once:
-
-defining gamification precisely,
-
-showing where it works,
-
-showing where it is missing or underdeveloped.
-
-Definition and Core Concepts of Gamification
-What to introduce
-
-Start with a clear, authoritative definition.
-
-Mandatory citation:
-
-Deterding et al., 2011
-“Gamification is the use of game design elements in non-game contexts.”
-
-Then clarify what gamification is NOT:
-
-Not serious games
-
-Not game-based learning
-
-Not full-fledged games
-
-Cite:
-
-Deterding et al., 2011
-
-Seaborn & Fels, 2015 (conceptual clarification)
-
-Game design elements (the ones you will later reuse)
-
-Introduce only elements you actually employ in:
-
-BIPMIN
-
-UMLegend
-
-Testing plugins
-
-Typical elements to cover:
-
-Points
-
-Badges
-
-Levels
-
-Challenges
-
-Feedback and progress visualization
-
-Leaderboards (with caution)
-
-Cite:
-
-Werbach & Hunter, For the Win, 2012
-
-Hamari et al., 2014 (mechanics–dynamics–outcomes)
-
-�� Tip:
-Already hint that not all elements are universally effective — this gives you room later to justify design choices.
-
-Psychological foundations (lightweight)
-
-You should include a minimal theoretical grounding:
-
-Intrinsic vs extrinsic motivation
-
-Self-Determination Theory (autonomy, competence, relatedness)
-
-Cite:
-
-Deci & Ryan, 2000
-
-Hamari et al., 2014 (empirical link to motivation)
-
-⚠️ Keep this concise (1–1.5 pages).
-You are not a psychology thesis.
-
-
-\end{comment}
-
-
 
 \subsection{Gamification in Educational Contexts}
 
@@ -344,7 +200,8 @@ A broader set of tools has been proposed for UML class diagram education, with b
 
 Jurgelaitis et al. \cite{jurgelaitis2019implementing} described the use of gamification elements such as points, achievements, leaderboards, and badges to teach UML in a level-based course structure using an online platform where students were asked to answer multiple choice questions on different diagram types; unlockable example diagrams were also implemented with the virtual currency used to unlock them being tied to exercise completion. Results showed that the mechanics improved both the average student scores and their self-declared intrinsic motivation.
 
-A similar approach was implemented with LOOP \cite{krugel2017computational}, an online course focused on object-oriented programming with a block-based editor to draw class diagrams, offering feedback for students as well as visual changes in the application when changing the diagram.
+A similar approach was implemented with LOOP \cite{krugel2017computational}, an online course focused on object-oriented programming with a block-based editor to draw class diagrams, offering feedback for students as well as visual changes in the application when changing the diagram. Similarly, Denden et al. \cite{denden2021effects} implemented gamification elements such as bonus points that can be obtained for completing certain assignments, badges that reward completion of quizzes on specific course topics, and leaderboards to rank students according to their experience points, with UML class diagrams being among the topics covered by the course. 
+
 
 ModelGame \cite{junior2021modelgame} is described as a reference framework that teachers can use to evaluate UML diagrams according to a set of parameters, represented by ten different quality metrics such as scope, syntactic, semantic, detection of inconsistencies, and resolution; it makes use of missions as a way to motivate students, with progression, points, and feedback being tied to adhering to the quality metrics.
 
@@ -374,31 +231,45 @@ Table \ref{tab:mapping} summarizes the literature mapping by listing all tools a
 GaMoVR \cite{yigitbas2022gamification, yigitbas2023design} & Gamification & Levels, Points, Unlockable Elements, Feedback & Accomplishment, Loss and Avoidance \\ 
 Moodle course (Jurgelaitis et al.) \cite{jurgelaitis2019implementing} & Gamification & Points, virtual currency, leaderboard, badges & Accomplishment, Ownership \\ 
 LOOP\cite{krugel2017computational} & Serious Game & Feedback & Accomplishment \\ 
+Moodle course (Denden et al) \cite{denden2021effects} & Gamification & Points, badges, leaderboards & Accomplishment
 Gamified mobile app \cite{sanjaya2020development} & Gamification & Challenges, badges, leaderboards & Accomplishment \\ 
 LearnER \cite{daehli2021exploring} & Serious Game & Progress, points, hints, feedback, leaderboards & Accomplishment \\ 
 ModelGame \cite{junior2021modelgame} & Gamification & Points, progress, feedback & Accomplishment \\ 
 innov8 \cite{boughzala2017feedback} & Serious Game & Cooperation & Social Influence \\ 
 Pictionary-like \cite{dupuychessa2015lego} & Serious Game & Cooperation, feedback, rewards & Social Influence, Scarcity, Accomplishment \\ 
-%PolyGloT-UML \cite{polyglot} & Gamification & Feedback, challenges, socialization, badges & Accomplishment, Ownership, Social Influence \\ 
 Classutopia \cite{marin2018learning, larenas2018classutopia} & Serious Game & Feedback, Challenges, Unlockable Rewards & Epic Meaning, Accomplishment, Empowerment \\ 
-2D action-adventure game \cite{livovsky2014learning} & Serious Game & Levels, Feedback & Epic Meaning, Accomplishment, Empowerment, Unpredictability \\ 
-%Papygame \cite{papygame1, papygame2} & Gamification & Points, Feedback, Progress, Levels & Accomplishment \\ 
+2D action-adventure game \cite{livovsky2014learning} & Serious Game & Levels, Feedback & Epic Meaning, Accomplishment, Empowerment, Unpredictability \\
 \bottomrule
 \end{tabular}
 \caption{Summary of existing game-like solutions for UML class diagram education}
 \label{tab:mapping}
 \end{table*}
 
+The mapping process was conducted in early 2023, following the first empirical study described in Chapter \ref{ch3}, with the goal of identifying existing tools for UML class diagram education. The process was then repeated in late 2024 to retrieve additional studies that had emerged after the conduction of the UMLegend controlled study and observe evolutions in the landscape of gamified modeling tools. Three new tools emerged as a result of the second analysis; the summary of the mapping analysis executed on them is reported in Table \ref{tab:mapping2}.
 
-%Bucchiarone et al. presented PapyGame, a gamified modeling environment for Papyrus, and conducted several user evaluations that highlighted positive results \cite{papygame1, papygame2}. The game implements modeling assignments paired with the Hangman game and offers sequential tasks. Successfully completing tasks yields points and allows progression in the game, while failing displays a feedback screen with highlighted errors. Both works share a consensus about the positive impacts of gamification on productivity and learning outcomes for software modeling teaching. 
-%ModelDefenders \cite{modeldefenders1, modeldefenders2} is an educational tool for teaching Model-Driven Engineering that employs a mutation testing strategy: given a class diagram under test, students are divided into attackers and defenders. Defenders define test cases (sequences of actions for the model and their expected output), and attackers make changes to the model to introduce bugs. Mutants are killed if at least one test case has a different output on the mutated diagram compared to the original model.
+Among the three tools, Papygame \cite{bucchiarone2020papyrus, bucchiarone2023gamifying} was described as a gamified plugin for the professional modeling environment Papyrus, which supports multiple UML notations. The main feature of the plugin is the structure of UML assignments as a sequential challenge with increasing difficulty level, exploiting the Hangman game to represent the modeling challenge: students can select diagram elements to compose a solution, with each incorrect option adding a new part of the hanged drawing, with immediate feedback displaying the errors. Successful exercise completion unlocks new challenges and awards experience and virtual currency. Experiments using the tool showed that it can have positive effects on productivity and learning outcomes.
 
-%PolyGloT-UML \cite{polyglot} is described as a combination of multiple educational tools (Papyrus web editor, 2-dimensional virtual environment) where students can take learning paths and interact with each other in a virtual hub, perform different activities defined by the lecturers (e.g. quizzes, modeling exercises), and complete assignments to earn badges.
+The same authors also integrated a 2-dimensional virtual environment with the Papyrus web editor to implement PolyGloT-UML \cite{bucchiarone2024polyglot}, an educational platform that supports learning paths that students can customize according to their progress, teacher-defined activities such as quizzes or exercises, and assignments that award badges; most importantly, the tool is the only example of gamified modeling tools that implements social dynamics, allowing students to interact with each other in the virtual hub. 
 
+Lastly, ModelDefenders \cite{cammaerts2023modeldefenders, cammaerts2024towards} adapts the concept of mutation testing to Model-Driven Engineering: students receive a class diagram and can face one another as either defenders who define action sequences based on the model and their expected output, or as attackers that apply changes to the diagram to introduce bugs; mutants are then considered killed if there is at least one test case that has a different output on the mutated diagram compared to the original one.
 
-%Denden et al. \cite{Denden2024}  describe an online course on Object Oriented Design Methodology using Moodle. Experience points are obtained by completing learning activities, bonus skill points are awarded for finishing optional teacher assignments, completing a quiz on a specific course topic is rewarded with a badge, and students are ranked in a leaderboard according to their experience points.
+{\begin{table*}[ht]
+\centering
+\footnotesize
+\begin{tabular}{@{}p{3cm}p{2.5cm}p{4cm}p{4cm}@{}}
+\toprule
+\textbf{Tool Name} & \textbf{Strategy} & \textbf{Game Mechanics} & \textbf{Octalysis Core Drives} \\
+\midrule
+Papygame \cite{bucchiarone2020papyrus, bucchiarone2023gamifying} & Gamification & Points, Feedback, Progress, Levels & Accomplishment, Loss and Avoidance, Empowerment \\ 
+PolyGloT-UML \cite{bucchiarone2024polyglot} & Gamification & Feedback, challenges, socialization, badges & Accomplishment, Ownership, Social Influence \\ 
+ModelDefenders \cite{cammaerts2023modeldefenders, cammaerts2024towards} & Gamification & Points, competition, feedback, challenges & Accomplishment, Empowerment, Social Influence \\
+\bottomrule
+\end{tabular}
+\caption{Summary of game-like solutions for UML class diagram education found with the second literature mapping analysis}
+\label{tab:mapping2}
+\end{table*}
 
-Taken together, the landscape of gamified tools for both BPMN and UML class diagram education reveals a common pattern: existing solutions are rare, focus mostly on single-session use, and tend to rely on the selection of answers out of predefined element sets instead of allowing for free-form diagram construction. The consequent research gap is the need of tools that combine a free modeling environment with automated, gamification-based feedback.
+Taken together, the landscape of gamified tools for both BPMN and UML class diagram education reveals a common pattern: existing solutions focus mostly on single-session use and tend to rely on the selection of answers out of predefined element sets instead of allowing for free-form diagram construction. The consequent research gap is the need of tools that combine a free modeling environment with automated, gamification-based feedback.
 
 \section{Artificial Intelligence and Large Language Models}
 

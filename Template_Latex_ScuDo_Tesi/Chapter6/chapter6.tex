@@ -116,7 +116,7 @@ The analysis performed to answer RQ2, instead, relied on the results obtained wi
 
 \subsection{Results}
 
-Descriptive statistics for the four quality metrics associated with RQ1 are presented in Table \ref{tab:rq1_llm4mod1}: counts for syntax, semantic, and pragmatic errors, as well as semantic distance values, are grouped according to both the Human and LLM performance, and minimum, maximum, mean, median, and standard deviation are reported; the graphical distribution of the four metrics can be observed in Figure \ref{fig:llm4mod1_rq1}.
+Descriptive statistics for the four quality metrics associated with RQ1 are presented in Table \ref{tab:rq1_llm4mod1}: counts for syntax, semantic, and pragmatic errors, as well as semantic distance values, are grouped according to both the Human and LLM performance, and minimum, maximum, mean, median, and standard deviation are reported; the graphical distribution of the four metrics can be observed in Figures \ref{fig:llm4mod1_syn}, \ref{fig:llm4mod1_sem}, \ref{fig:llm4mod1_prag}, and \ref{fig:llm4mod1_dist}.
 
 \begin{table}[ht]
 \centering
@@ -140,31 +140,36 @@ Distance         & 0.87 & 10.20 & 5.01 (2.36) & 4.24 & 2.24 & 11.54 & 7.25 (2.86
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.5\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter6/mod1_violin_syn.png}
         \caption{Box and violin plot for the count of \textit{Syntax Errors}}
         \label{fig:llm4mod1_syn}
     \end{subfigure}\hfill
-    \begin{subfigure}{0.5\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter6/mod1_violin_sem.png}
         \caption{Box and violin plot for the count of \textit{Semantic Errors}}
         \label{fig:llm4mod1_sem}
+    \caption{Box and violin plots for RQ1 metrics in the first study (separated for readability)}
     \end{subfigure}\hfill
-    \begin{subfigure}{0.5\linewidth}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter6/mod1_violin_prag.png}
         \caption{Box and violin plot for the count of \textit{Pragmatic Errors}}
         \label{fig:llm4mod1_prag}
     \end{subfigure}\hfill
-    \begin{subfigure}{0.5\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter6/mod1_violin_dist.png}
         \caption{Box and violin plot for the \textit{Semantic Distance}}
         \label{fig:llm4mod1_dist}
     \end{subfigure}
-    \caption{Box and violin plots for RQ1 metrics in the first study}
+    \caption{Box and violin plots for RQ1 metrics in the first study (separated for readability)}
     \label{fig:llm4mod1_rq1}
 \end{figure}
 
@@ -190,9 +195,9 @@ The analysis identified statistically significant differences for the count of s
 
 \begin{table}[ht]
 \centering
-\footnotesize
 \caption{Correlation matrix of the independent variables for RQ2 in Study 1.}
 \label{tab:corrmatrix}
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
                     & Classes & Attributes \& Methods & Associations & Estimated Difficulty & Flesch-Kincaid score \\
@@ -203,7 +208,8 @@ Associations &         &           & 1.000          & 0.411 & 0.151 \\
 Estimated Difficulty &         &           &                  & 1.000 & 0.403 \\
 Flesch-Kincaid score &         &           &                  &         & 1.000 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 Associations showed a high correlation level with classes, suggesting a strong linear association between them, leading to the exclusion of association from the set of independent variables used for the RQ2 analysis; the results of the linear regression are presented in Table \ref{tab:rq2_llm4mod1}, where, for each pair of independent and dependent variables, the estimate and the obtained p-value are reported. Given a total of 16 comparisons, the p-value threshold for significance was set as $\alpha_C = 0.003125$ following Bonferroni correction.
@@ -213,6 +219,7 @@ Associations showed a high correlation level with classes, suggesting a strong l
 \footnotesize
 \caption{Linear regression results for RQ2 in Study 1 (significant p-values are in bold).}
 \label{tab:rq2_llm4mod1}
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{llllllllllllll}
     \toprule
         && Classes & ~ & ~ & Attributes \& Methods & ~ & ~ & Estimated Difficulty & ~ & ~ & Flesch-Kincaid score & ~ & ~ 
@@ -224,7 +231,8 @@ Associations showed a high correlation level with classes, suggesting a strong l
         LLM & Semantic errors & 0.33 & 0.48 & 0.50 & 0.03 & 0.09 & 0.78 & 1.58 & 0.59 & 0.01 & 0.12 & 0.10 & 0.23 \\ 
         ~ & Distance & 0.63 & 0.39 & 0.13 & 0.13 & 0.08 & 0.08 & 1.84 & 0.46 & \textbf{8.1e-4} & -8.0e-4 & 0.09 & 0.99 \\ 
         \bottomrule
-    \end{tabular}
+    \end{tabular}%
+}
 \end{table}
 
 The number of classes has a positive impact on both variables for both the human solver and the LLM: none of the coefficients are significant, however, implying that, while a higher number of classes can lead to an increased frequency of errors, both the student and the agent were able to correctly represent the main necessary elements in an UML exercise, even in cases with a high number of classes.
@@ -378,13 +386,13 @@ Redundancy Rate   & 0.00 & 0.50 & 0.17 (0.16) & 0.11 & 0.00 & 0.63 & 0.21 (0.21)
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.5\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter6/mod2_violin_comp.png}
         \caption{Box and violin plot for the \textit{Completeness Rate}}
         \label{fig:llm4mod2_comp}
     \end{subfigure}\hfill
-    \begin{subfigure}{0.5\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter6/mod2_violin_red.png}
         \caption{Box and violin plot for the \textit{Redundancy Rate}}
@@ -561,7 +569,7 @@ The two diagrams generated by the LLM are presented in Figure \ref{fig:tigre_gen
         \caption{Solution generated by the tool for the \textit{Ski Passes} exercise}
         \label{fig:tigre_gen2}
     \end{subfigure}
-    \caption{Solution generated for the two exercises used in the proof-of-concept evaluation of the TIGRE assistant}
+    \caption{Solutions generated for the two exercises used in the proof-of-concept evaluation of the TIGRE assistant}
     \label{fig:tigre_gen}
 \end{figure}
 
@@ -802,7 +810,7 @@ To answer RQ1, a fixed effect linear model was applied to the three metrics obta
 To account for 18 simultaneous pairwise comparisons (6 model pairs x 3 metrics), a Bonferroni-adjusted significant threshold of $\alpha_C = 0.05/18 = 0.00278$ was applied.
 
 To answer RQ2, errors were grouped by category and then a count of the different error categories made by each model was computed, in order to evaluate the distribution of errors across the four agents. The analysis associated with RQ2 was performed from a qualitative and descriptive point of view, and no null hypothesis was formulated.
-c
+
 \subsection{Results}
 
 Table \ref{tab:rq1_llm4mod4} summarizes the statistics measured for the three metrics used to answer RQ1 (count of syntax errors, count of semantic errors, diagram completeness) across the four models used for the study; the distribution of all three metrics per each model can be seen in Figure \ref{fig:llm4mod4_rq1}.
@@ -891,7 +899,7 @@ Gemini vs Qwen      & 3.20  & \textbf{3.15e-14} &  0.13  & 0.862  & -0.12\% & 0.
 
 The results of the statistical analysis point out to somewhat minimal differences between models, given that most of the comparisons did not yield statistically significant results. In terms of syntax errors, statistically significant results happen whenever Qwen is involved, since the model performs far worse than the competition, and none of the resulting p-values when comparing the other three models are significant, reflecting their excellent performance observed with the descriptive assessment performed above. ${H_{0\_{syn}}}$ cannot be rejected in its global form, since the only statistically significant differences involve Qwen, which can be said to be the worst performing model on said metric, while the other three models are statistically equivalent.
 
-The only comparison that showed significant differences (and only slightly significant while being sub-threshold at 0.086 and not meeting the $\alpha = 0.05$ constraint) for the count of semantic errors is the one between ChatGPT and DeepSeek, where the latter performed better: the interpretation is that the focus on code and reasoning may give DeepSeek an edge in tasks that require the ability to infer implicit domain constraints from natural language descriptions. Given that all other pairs do not show a statistically significant difference, the null hypothesis ${H_{0\_{sem}}}$ cannot be rejected: although certain models perform better than others, differences are not marked enough to make one stand out as clearly superior or worse.
+The only comparison that approached but did not reach significance with a p-value of 0.086 lower than the adjusted coefficient $\alpha = 0.00278$ for the count of semantic errors is the one between ChatGPT and DeepSeek, where the latter performed better: the interpretation is that the focus on code and reasoning may give DeepSeek an edge in tasks that require the ability to infer implicit domain constraints from natural language descriptions. Given that all other pairs do not show a statistically significant difference, the null hypothesis ${H_{0\_{sem}}}$ cannot be rejected: although certain models perform better than others, differences are not marked enough to make one stand out as clearly superior or worse.
 
 Diagram completeness showed no statistically significant difference in any of the six comparisons: once more, the four models achieved a similar level of performance, but even the less capable Qwen was still able to achieve a satisfactory completeness level, on average, and thus cannot be considered worse than the other three agents. The best performing models were the proprietary ones, whose capabilities were however in line with the performance shown by the open-source alternatives, with not significant enough increases in performance. ${H_{0\_{compl}}}$ thus cannot be rejected: the choice of different LLM agents does not introduce a statistically significant impact on diagram completeness.
 
@@ -902,13 +910,13 @@ To answer RQ2, the errors produced by the four models were grouped by category, 
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.65\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter6/mod4_errors_syn.png}
         \caption{Distribution of \textit{Syntax Errors} per model in Study 4}
         \label{fig:llm4mod4_syn_count}
     \end{subfigure}\hfill
-    \begin{subfigure}{0.65\linewidth}
+    \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter6/mod4_errors_sem.png}
         \caption{Distribution of \textit{Semantic Errors} per model in Study 4}
@@ -938,7 +946,7 @@ Other semantic error categories were far less common, and all four models had si
 
 \textbf{Threats to construct validity:} the three metrics selected to answer RQ1 are relevant, but may not be the best way to express diagram quality. Other dimensions such as pragmatic quality or internal consistency were not measured, and their inclusion may have helped each model's strengths and weakness stand out more. The use of quality measures tailored for human-produced diagrams may not capture errors that are specific for LLM-generated artifacts.
 
-\textbf{Threats to conclusion validity:} the sample of 15 exercises limits the statistical power of the fixed-effects linear model, which may be insufficient to detect differences of small-to-moderate effect size. The slightly significant result observed for semantic errors between ChatGPT and DeepSeek ($p = 0.086$) is a concrete example: the effect may be real, but the current design does not provide enough evidence to conclude so with confidence. Expanding the exercise set in future replications would directly address this limitation.
+\textbf{Threats to conclusion validity:} the sample of 15 exercises limits the statistical power of the fixed-effects linear model, which may be insufficient to detect differences of small-to-moderate effect size. The non-significant but potentially meaningful result observed for semantic errors between ChatGPT and DeepSeek ($p = 0.086$) is a concrete example: the effect may be real, but the current design does not provide enough evidence to conclude so with confidence. Expanding the exercise set in future replications would directly address this limitation.
 
 
 \subsection{Key Findings and Lessons Learned}
