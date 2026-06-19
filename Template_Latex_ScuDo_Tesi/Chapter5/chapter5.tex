@@ -3,7 +3,7 @@
 
 The development of the framework described in the previous chapter aimed at addressing the issues that had emerged with the empirical study with BIPMIN, leading to the development of a new tool and the execution of a second experiment with a similar design, to observe whether a new set of mechanics and a revised evaluation approach could make a gamified tool more effective. The framework was designed with the goal of supporting longitudinal use, implying the need of a specific evaluation procedure aimed at testing its potential benefits over a period of time beyond that of a single experiment. For this purpose, it was decided to redevelop the BIPMIN application, which had already proved the benefits of gamification applied to BPMN modeling, in accordance with the new selection of game mechanics, and to use this new version for the practical activities of the Information System course, where the original tool was tested.
 
-The goal of this new study was to explore a different research direction: instead of comparing the gamified approach with regular modeling activities, the purpose was to observe whether continuous use of a gamified environment would lead to measurable improvements in the students' BPMN modeling knowledge and final performance. This chapter describes how the BIPMIN tool was redesigned according to the new framework and then presents the results of the study, focused on both the overall student perception of the gamified experience and on the empirical evaluation of how the tool impacted the students' grades and learning progression over time. The work described in this chapter has been split into two research articles: a first experience report focused on student perception and lessons learned was presented in \cite{garaccione2024ease}, while the empirical evaluation was described in \cite{garaccione2024esem}.
+The goal of this new study was to explore a different research direction: instead of comparing the gamified approach with regular modeling activities, the purpose was to observe whether continuous use of a gamified environment would lead to measurable improvements in the students' BPMN modeling knowledge and final performance. This chapter describes how the BIPMIN tool was redesigned according to the new framework and then presents the results of the study, focused on both the overall student perception of the gamified experience and on the empirical evaluation of how the tool impacted the students' grades and learning progression over time. The work described in this chapter has been split into two research articles: a first experience report focused on student perception and lessons learned was presented in \cite{garaccione2024ease}, while the empirical evaluation was described in \cite{garaccione2024esem}. For replication purposes, the application has been made distributed with two Docker images, respectively for the client\footnote{\url{https://hub.docker.com/repository/docker/giacomogaraccione/bipmin-full-client/general}} and the server\footnote{\url{https://hub.docker.com/repository/docker/giacomogaraccione/bipmin-full-server/general}}; moreover, a live version of the tool is deployed at the following link: \url{https://softeng.polito.it/bipmin}, with username UserTest and password !!User\_Test\_s100030!!.
 
 \section{Limitations of the existing version}
 
@@ -60,9 +60,9 @@ The syntax evaluation kept the original underlying structure by using the \texti
 
 Following a complete syntax assessment, the semantic evaluation takes place by comparing elements in a diagram with the set of reference solutions: the process iterates on the three structural elements (pools, lanes, sub-processes) first and then loops through the process parts; a second iteration on each process part's possible group of elements is performed, looking for the specified elements by continuously filtering the elements in the diagram according to the specified properties. The sorting follows a given order: first, the element type is checked, then name similarity, then by belonging to the expected parent; in case an element has additional constraints that depend on the type such as event definition or gateway type (split or merge), those properties are also added to the filtering procedure. After all groups have been processed and matching parts have been identified, a second evaluation step is performed to identify errors such as elements in the same part being in the wrong order or parts being in the wrong order (identified by the last element of the preceding part not having an outgoing flow to the first element of the following part), and a final step looks at the elements in non-matched parts to look for close elements among diagram elements that do not belong to any part. This process is repeated for each defined reference solution and leads to the computation, together with the list of errors, of a completeness score that depends on the sum of matched entities, actors, sub-processes, and process parts over the total number of such elements; the solution with the highest score is used as the reference and its accompanying feedback is shown to the student. Figure \ref{fig:sem_alg_5} summarizes the semantic evaluation process.
 
-\begin{figure}[ht]
+\begin{figure}[th]
     \centering
-    \includegraphics[width=0.75\linewidth]{Template_Latex_ScuDo_Tesi/Chapter5/sem_alg.png}
+    \includegraphics[width=0.9\linewidth]{Template_Latex_ScuDo_Tesi/Chapter5/sem_alg.png}
     \caption{Semantic evaluation algorithm}
     \label{fig:sem_alg_5}
 \end{figure}
@@ -93,7 +93,7 @@ An example of what an exercise's page looks like when the relevant mechanics are
 
 \begin{figure*}
     \centering
-    \includegraphics[width=0.9\linewidth]{Template_Latex_ScuDo_Tesi/Chapter5/ex_page.png}
+    \includegraphics[width=\linewidth]{Template_Latex_ScuDo_Tesi/Chapter5/ex_page.png}
     \caption{Exercise page in the revised BIPMIN application showing 1) Student Avatar, 2) Boss, 3) Indicator, 4) Error Lists, 5) Process Parts Lists, 6) Diagram Feedback, 7) Exercise Menu}
     \label{fig:ex_page}
 \end{figure*}
@@ -442,7 +442,7 @@ The threats to validity for the longitudinal study are discussed in this section
 
 \textbf{Threats to conclusion validity:} the Wilcoxon tests performed to answer RQ1 are non-parametric, and thus have no statistical prerequisite. The linear mixed models used to answer RQ2 are parametric: while these models are robust enough to tolerate moderate departures from normality, given the sample sizes involved in the analysis, the assumption cannot be formally verified and constitutes a residual threat. The analysis performed for RQ2 also assumed that all exercises were performed in their intended order, but there may have been students who tried them differently.
 
-\subsection{Key Findings and Lessons Learned}
+\section{Key Findings and Lessons Learned}
 
 The longitudinal study with the new version of BIPMIN was conducted to conclude the work described in the two preceding chapters, by describing the revised version of the tool developed in parallel with another tool according to the same design choices, trying to address and overcome the limitations emerged with the 2023 study. The experiment was conceptualized with the goal of verifying whether gamified BPMN modeling education, which had shown promising results in a single session compared to classical modeling, could maintain similarly good result and lead to improvements in the students' performance and their perception of the topic.
 

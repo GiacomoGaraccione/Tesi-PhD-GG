@@ -50,10 +50,62 @@ The second set of thesis research questions is instead structured around the stu
     \item[\textbf{TRQ5:}] \textit{Can an LLM-based tool support educators in the creation of exercise reference solutions?}\\
     This question guided the development of a prototypal assistant that integrates LLM support in the process for defining reference solutions in UMLegend, with a proof of concept evaluation that observes whether the generated draft solutions are structurally correct and can be used to support an interactive workflow between human lecturers and LLMs, potentially more efficient than completely manual generation. Given the effort needed to define solutions and the issues that come with under-specified references, the development of such a tool is crucial to extend the capabilities of the tools developed in the first two research phases.
     \item[\textbf{TRQ6:}] \textit{How do different LLM architectures compare in diagram generation quality under equal conditions (exercise selection and prompting strategy)?}\\
-    This question builds upon the findings of the first two comparative studies on LLM-assisted diagram generation, introducing a more advanced prompting strategy tested on four different LLM agents, with the intent of identifying the best suited models to integrate in tool development and educational activities depending on the specific model-related goal.
+    This question builds upon the findings of the first two comparative studies on LLM-assisted diagram generation, introducing a more advanced prompting strategy tested on four different LLM agents, with the intent of identifying the best-suited models to integrate into tool development and educational activities, depending on the specific model-related goal.
 \end{itemize}
 
-The contributions to the research area of software engineering education made to answer these research questions can be summarized according to four dimensions. The empirical contribution consists of one tool-development activity and seven empirical studies designed using the Goal-Question-Metric template, ensuring a traceable alignment between each study's goals, the research questions formulated to reach them, the metrics used to answer the questions, and the statistical analyses on said metrics. Validated instruments were also applied throughout the controlled studies to measure participant perception such as the Technology Acceptance Model, the GAMEX scale to measure the perception of the gamified experience, and the System Usability Scale; the consistent use of the same instruments allows for meaningful cross-experiment comparison \cite{basili1994gqm}, necessary to draw findings and answer the research questions.
+To address these six overarching research questions, multiple studies have been conducted and published over the duration of the PhD programme; Table \ref{tab:publications} lists all studies, together with the publication venue, the publication year, the chapter in which each publication is described, and the corresponding TRQ(s)
+
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[ht]
+\small
+\centering
+\caption{Publications supporting the thesis}
+\label{tab:publications}
+\begin{tabular}{p{0.44\textwidth} p{0.23\textwidth} p{0.21\textwidth}}
+\toprule
+\textbf{Publication} & \textbf{Venue (Year)} & \textbf{Chapter / TRQs} \\
+\midrule
+\textbf{P1:} BIPMIN: A Gamified Framework for Process Modeling Education
+  & \textit{Information}, 2023 & Ch.~3 / TRQ1, TRQ3 \\
+\midrule
+\textbf{P2:} Gamification of BPMN Education: An Experience Report
+  & EASE, 2023 & Ch.~3 / TRQ1, TRQ3 \\
+\midrule
+\textbf{P3:} Gamification of BPMN Education: An Experimental Analysis
+  & \textit{Software and Systems Modeling}, 2024 & Ch.~3 / TRQ1, TRQ3 \\
+\midrule
+\textbf{P4:} UMLegend: A Gamified Learning Tool for UML Class Diagrams
+  & Gamify, 2023 & Ch.~4 / TRQ1, TRQ3 \\
+\midrule
+\textbf{P5:} Gamification of Conceptual Modeling: Productivity and Students' Perception
+  & \textit{Software Quality Journal}, 2024 & Ch.~4 / TRQ1, TRQ3 \\
+\midrule
+\textbf{P6:} Gamification of UML Class Diagrams: An Experimental Analysis
+  & \textit{Software and Systems Modeling}, 2026 & Ch.~4 / TRQ1, TRQ3 \\
+\midrule
+\textbf{P7:} Gamifying BPMN Education: A Longitudinal Study
+  & EASE, 2024 & Ch.~5 / TRQ2, TRQ3 \\
+\midrule
+\textbf{P8:} Gamification of a BPMN Modeling Course: Effectiveness and Student Perception
+  & ESEM, 2024 & Ch.~5 / TRQ2, TRQ3 \\
+\midrule
+\textbf{P9:} Evaluating LLMs in UML Class Diagram Modeling Exercises
+  & ESEM, 2024 & Ch.~6 / TRQ4 \\
+\midrule
+\textbf{P10:} Evaluating LLMs in UML Use Case Diagram Modeling Exercises
+  & NLBSE, 2025 & Ch.~6 / TRQ4 \\
+\midrule
+\textbf{P11:} An Automated Diagram Generator of Reference Solutions for Modeling Educators
+  & SEAA, 2026 & Ch.~6 / TRQ5 \\
+\midrule
+\textbf{P12:} A Comparison of LLMs for the Generation of UML Class Diagrams
+  & MODELS-C, 2025 & Ch.~6 / TRQ6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+The contributions to the research area of software engineering education made to answer the six thesis research questions can be summarized according to four dimensions. The empirical contribution consists of one tool-development activity and seven empirical studies designed using the Goal-Question-Metric template, ensuring a traceable alignment between each study's goals, the research questions formulated to reach them, the metrics used to answer the questions, and the statistical analyses on said metrics. Validated instruments were also applied throughout the controlled studies to measure participant perception such as the Technology Acceptance Model, the GAMEX scale to measure the perception of the gamified experience, and the System Usability Scale; the consistent use of the same instruments allows for meaningful cross-experiment comparison \cite{basili1994gqm}, necessary to draw findings and answer the research questions.
 
 The second contribution, more focused on tool development, introduces two developed and empirically validated software artifacts in the form of the BIPMIN and UMLegend gamified platform, with the former providing a dual contribution, first as a prototype and then as a redesigned longitudinal application; the prototypal intelligent assistant, named TIGRE, also falls within this category.
 
